@@ -1,0 +1,82 @@
+<div style="margin-top: 20px; display: flex; justify-content: center;">
+  <% if user_signed_in? %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large" %>
+  <% else %>
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  <% end %>
+</div>
+
+<div class="container">
+  <p> > <%= @user.nom %> < </p>
+  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: 'delete'}  %>
+              <i class="fa-solid fa-sign-out"></i>
+  <%= console %>
+  <button type="button" data-bs-toggle="modal" data-bs-target="#nom">
+      <i class="fa-solid fa-pen-to-square"></i>
+  </button>
+  </div>
+  <p>Prénom</p>
+  <div class="bio">
+    <strong>My bio:</strong>
+    <p><%#= @candidat.bio %></p>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#bio">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+  </div>
+  <button>Info</button>
+  <button>Archive</button>
+  <button>Books</button>
+  <button>Size</button>
+</div>
+<div class="container" style="display: flex;justify-content: center;">
+  <%= link_to candidat_path do %>
+    <i class="fa-solid fa-clapperboard"></i>
+  <% end %>
+</div>
+
+<div class="modal fade" id="nom" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Edit </h2>
+        <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :nom,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Ton nom",
+                        input_html: { autocomplete: "nom" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="bio" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Edit </h2>
+        <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :bio,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Ta bio",
+                        input_html: { autocomplete: "bio" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>

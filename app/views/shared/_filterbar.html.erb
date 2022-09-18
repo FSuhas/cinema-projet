@@ -1,0 +1,57 @@
+<div class="container">
+  <div data-controller="toggle" class="bg-white py-1 shadow" style="cursor: pointer; border-radius: 10px;">
+    <div data-action="click->toggle#toggle touch->toggle#toggle" class="d-flex" style="align-items: center; justify-content: space-between;">
+      <h3 style="margin-left: 10px;">Filters</h3>
+      <i data-toggle-target="caret" class="fa-solid fa-caret-down" aria-hidden="true" style="margin-right: 10px;"></i>
+    </div>
+    <div data-toggle-target="toggleable" class="hidden container" >
+      <div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;">
+        <div class="gauche">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="figuration">
+            <label class="form-check-label" for="figuration">
+              Figuration
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="silhouette">
+            <label class="form-check-label" for="silhouette">
+              Silhouette
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="doublure">
+            <label class="form-check-label" for="doublure">
+              Doublure
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="role">
+            <label class="form-check-label" for="role">
+              Rôle
+            </label>
+          </div>
+        </div>
+        <div class="droite">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="homme">
+            <label class="form-check-label" for="homme">
+              Homme
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="femme">
+            <label class="form-check-label" for="femme">
+              Femme
+            </label>
+          </div>
+        </div>
+      </div>
+      <h4 style="margin-top: 10px; text-align: center;">Tranche d'âge</h4>
+      <input type="range" class="form-range" id="range">
+      <h4 style="text-align: center;">Distance</h4>
+      <input type="range" class="form-range" id="range">
+    </div>
+  </div>
+  <p style="margin-left: 10px;">Résultas : 25/100</p>
+</div>
