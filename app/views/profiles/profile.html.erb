@@ -16,10 +16,10 @@
   </button>
   </div>
   <p>Prénom</p>
-  <div class="bio">
-    <strong>My bio:</strong>
-    <p><%#= @candidat.bio %></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#bio">
+  <div class="infos">
+    <strong>Mes infos:</strong>
+    <p><%= @user.infos %></p>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#infos">
       <i class="fa-solid fa-pen-to-square"></i>
     </button>
   </div>
@@ -57,19 +57,19 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="bio" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+<div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="container">
         <h2>Edit </h2>
         <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
-            <%= f.input :bio,
+            <%= f.input :infos,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Ta bio",
-                        input_html: { autocomplete: "bio" } %>
+                        placeholder: "Tes infos",
+                        input_html: { autocomplete: "infos" } %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Update", class: 'btn btn-primary' %>
