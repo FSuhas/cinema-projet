@@ -1,36 +1,39 @@
-<div style="margin-top: 20px; display: flex; justify-content: center;">
-  <% if user_signed_in? %>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large" %>
-  <% else %>
-      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-  <% end %>
-</div>
-
-<div class="container">
-  <p> > <%= @user.nom %> < </p>
-  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: 'delete'}  %>
-              <i class="fa-solid fa-sign-out"></i>
-  <%= console %>
-  <button type="button" data-bs-toggle="modal" data-bs-target="#nom">
-      <i class="fa-solid fa-pen-to-square"></i>
-  </button>
+<div class="container" style="display: flex;justify-content: center;">
+  <div class="haut" style="display: flex; align-items: center; margin-top: 3rem;">
+    <div>
+      <% if user_signed_in? %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large" %>
+      <% else %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
+    </div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#nom" style="border: none; display: flex;align-items: center;">
+      <div class="fullname">
+        <p style="margin-bottom: 0;"> <%= @user.prenom %> </p>
+        <p style="margin-bottom: 0;"> <%= @user.nom %> </p>
+      </div>
+        <i class="fa-solid fa-pen-to-square"></i>
+    </button>
   </div>
-  <p>Prénom</p>
-  <div class="infos">
-    <strong>Mes infos:</strong>
-    <p><%= @user.infos %></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#infos">
+</div>
+<div class="container" style="display: flex; justify-content: center;">
+  <div class="infos" style="width: 100%;">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
+      <strong>Mes infos:</strong>
+      <p><%= @user.infos %></p>
       <i class="fa-solid fa-pen-to-square"></i>
     </button>
   </div>
+</div>
+<div class="container" style="display: grid; grid-template-columns: 50% 50%;" >
   <button>Info</button>
   <button>Archive</button>
   <button>Books</button>
   <button>Size</button>
 </div>
-<div class="container" style="display: flex;justify-content: center;">
+<div class="container" style="display: flex;justify-content: center;position: absolute; bottom: 2rem;">
   <%= link_to candidat_path do %>
-    <i class="fa-solid fa-clapperboard"></i>
+    <i class="fa-solid fa-clapperboard" style="font-size: 50px; color: black"></i>
   <% end %>
 </div>
 
@@ -45,14 +48,19 @@
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Ton nom",
+                        placeholder: "Nom",
                         input_html: { autocomplete: "nom" } %>
+            <%= f.input :prenom,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Prenom",
+                        input_html: { autocomplete: "prenom" } %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Update", class: 'btn btn-primary' %>
           </div>
         <% end %>
-        <%= link_to "Back", :back %>
       </div>
     </div>
   </div>
@@ -75,7 +83,6 @@
             <%= f.button :submit, "Update", class: 'btn btn-primary' %>
           </div>
         <% end %>
-        <%= link_to "Back", :back %>
       </div>
     </div>
   </div>
