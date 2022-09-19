@@ -11,8 +11,10 @@ class ProfilesController < ApplicationController
   def update
     if current_user.update(params_create)
       redirect_to profile_path
+      flash[:notice] = "Mis à jour avec succès"
     else
       render profile_path, status: :unprocessable_entity
+      flash[:notice] = "Veuillez remplir tous les champs"
     end
   end
 

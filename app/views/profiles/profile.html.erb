@@ -55,11 +55,7 @@
 
 <!-- Boutton back -->
 
-<div class="container" style="display: flex;justify-content: center;position: absolute; bottom: 2rem;">
-  <%= link_to candidat_path do %>
-    <i class="fa-solid fa-clapperboard" style="font-size: 50px; color: black"></i>
-  <% end %>
-</div>
+<%= render 'shared/retourcandidat' %>
 
 
 <!-- Modal -->
@@ -73,18 +69,16 @@
         <h2>Edit </h2>
         <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
-            <%= f.input :nom,
-                        required: true,
-                        autofocus: true,
-                        label: false,
-                        placeholder: "Nom",
-                        input_html: { autocomplete: "nom" } %>
             <%= f.input :prenom,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Prenom",
-                        input_html: { autocomplete: "prenom" } %>
+                        placeholder: "Prenom" %>
+            <%= f.input :nom,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Nom" %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Update", class: 'btn btn-primary' %>

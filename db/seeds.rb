@@ -1,7 +1,70 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'open-uri'
+require 'json'
+require 'date'
+
+
+puts "------------------------------"
+puts "----------Start seed----------"
+puts "------------------------------"
+
+puts "#destroy_all start ..."
+
+Booking.destroy_all
+
+Book.destroy_all
+
+Post.destroy_all
+
+User.destroy_all
+
+puts "#destroy_all finish !"
+sleep(1)
+puts "User seed start..."
+
+fabien = User.new(email: 'test@test.com',
+  password: 'azerty',
+  nom: '',
+  prenom: '',
+  adresse: '',
+  telephone: '',
+  date_de_naissance: '',
+  sexe: '',
+  infos: '',
+  role: ''
+)
+
+fabien.save!
+
+jessica = User.new(email: 'jessica@test.com',
+  password: 'azerty',
+  nom: '',
+  prenom: '',
+  adresse: '',
+  telephone: '',
+  date_de_naissance: '',
+  sexe: '',
+  infos: '',
+  role: ''
+)
+
+jessica.save!
+
+puts "user seed finish !"
+sleep(1)
+puts "Post seed start..."
+
+jessica_post = Post.new(titre: 'Post de Jessica',
+  role: 'recruteur',
+  age: '25',
+  genre: 'femme',
+  ville: 'Paris',
+  departement: '75',
+  lieux: 'Paris',
+  date: '2021-01-01',
+  descriptif: 'Bonjour, je suis Jessica et je recherche un acteur pour un court-métrage. Merci de me contacter pour plus d\'informations.',
+  user: jessica
+)
+
+jessica_post.save!
+
+puts "Post seed finish !"
