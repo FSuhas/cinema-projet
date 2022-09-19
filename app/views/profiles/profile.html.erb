@@ -12,30 +12,59 @@
         <p style="margin-bottom: 0;"> <%= @user.prenom %> </p>
         <p style="margin-bottom: 0;"> <%= @user.nom %> </p>
       </div>
-        <i class="fa-solid fa-pen-to-square"></i>
+        <i class="fa-solid fa-pen-to-square" style="margin-left: 10px; margin-top: -40px;"></i>
     </button>
   </div>
 </div>
+
+<!-- Mes infos -->
+
 <div class="container" style="display: flex; justify-content: center;">
   <div class="infos" style="width: 100%;">
     <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
       <strong>Mes infos:</strong>
-      <p><%= @user.infos %></p>
-      <i class="fa-solid fa-pen-to-square"></i>
+      <p><%= @user.infos.truncate(40) %></p>
     </button>
   </div>
 </div>
+
+<!-- Groupe boutton -->
+
 <div class="container" style="display: grid; grid-template-columns: 50% 50%;" >
-  <button>Info</button>
-  <button>Archive</button>
-  <button>Books</button>
-  <button>Size</button>
+
+  <%= link_to infos_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+    <i class="fa-solid fa-id-card" style="font-size: 50px; color: black;"></i>
+    <p>My Infos</p>
+  <% end %>
+
+  <%= link_to archive_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+    <i class="fa-solid fa-folder-open" style="font-size: 50px; color: black;"></i>
+    <p>My Folder</p>
+  <% end %>
+
+  <%= link_to books_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+    <i class="fa-solid fa-images" style="font-size: 50px; color: black;"></i>
+    <p>My Books</p>
+  <% end %>
+
+  <%= link_to mensuration_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+    <i class="fa-solid fa-person" style="font-size: 50px; color: black;"></i>
+    <p>My Size</p>
+  <% end %>
 </div>
+
+<!-- Boutton back -->
+
 <div class="container" style="display: flex;justify-content: center;position: absolute; bottom: 2rem;">
   <%= link_to candidat_path do %>
     <i class="fa-solid fa-clapperboard" style="font-size: 50px; color: black"></i>
   <% end %>
 </div>
+
+
+<!-- Modal -->
+
+<!-- Nom Prenom -->
 
 <div class="modal fade" id="nom" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -65,6 +94,9 @@
     </div>
   </div>
 </div>
+
+<!-- Infos -->
+
 <div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
