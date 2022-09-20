@@ -1,2 +1,8 @@
 <h1>My Archive</h1>
 <%= render 'shared/retourprofile' %>
+
+<% @user.bookings.each do |b| %>
+  <strong><%= b.post.titre %></strong><br>
+  <small><%= b.post.descriptif.truncate(50) %></small>
+  <li><%= b.status %></li>
+<% end %>

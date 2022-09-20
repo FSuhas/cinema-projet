@@ -39,6 +39,20 @@ fabien.save!
 
 jessica = User.new(email: 'jessica@test.com',
   password: 'azerty',
+  nom: 'Bolle',
+  prenom: 'Jessica',
+  adresse: '3 rue winston chruchill 77100 Meaux',
+  telephone: '06.19.75.78.56',
+  date_de_naissance: '1984-07-04',
+  sexe: 'Femme',
+  infos: 'Trop gentille',
+  role: ''
+)
+
+jessica.save!
+
+lael = User.new(email: 'lael@test.com',
+  password: 'azerty',
   nom: '',
   prenom: '',
   adresse: '',
@@ -49,7 +63,7 @@ jessica = User.new(email: 'jessica@test.com',
   role: ''
 )
 
-jessica.save!
+lael.save!
 
 puts "user seed finish !"
 sleep(1)
@@ -83,4 +97,30 @@ jessica_post_two = Post.new(titre: 'Post de Jessica 2',
 
 jessica_post_two.save!
 
+lael_post = Post.new(titre: 'Post de Lael',
+  role: 'candidat',
+  age: '25',
+  genre: 'Homme',
+  ville: 'Paris',
+  date: '2021-01-01',
+  descriptif: 'Bonjour, je suis Lael et je recherche un recruteur pour un court-métrage. Merci de me contacter pour plus d\'informations.',
+  user: lael
+)
+
+lael_post.save
+
+lael_post_two = Post.new(titre: 'Post de Lael 2',
+  role: 'candidat',
+  age: '25',
+  genre: 'Homme',
+  ville: 'Paris',
+  date: '2021-01-01',
+  descriptif: 'Bonjour, je suis Lael et je recherche un recruteur pour un court-métrage. Merci de me contacter pour plus d\'informations.',
+  user: lael
+)
+
+lael_post_two.save
+
 puts "Post seed finish !"
+
+pust "Booking seed start..."

@@ -5,6 +5,13 @@
 <p><%= @post.date.strftime("%m/%d/%Y") %></p>
 <p><%= @post.ville %></p>
 
+<%= simple_form_for [@post, @booking] do |f| %>
+  <%= f.input :status, style: 'display: none !important;' %>
+  <%= f.button :submit, "Postulez", class: 'btn btn-primary' %>
+<% end %>
+
+
+
 <div class="container" style="display: flex; justify-content: center;">
   <div class="infos" style="width: 100%;">
     <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
@@ -12,6 +19,8 @@
     </button>
   </div>
 </div>
+
+<!-- Modal -->
 
 <div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
