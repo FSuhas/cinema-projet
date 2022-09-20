@@ -1,8 +1,11 @@
 class InfosController < ApplicationController
-  before_action :set_profile, only: [:show, :edit]
+  before_action :set_infos, only: [:show, :edit]
 
   def infos
     @user = current_user
+  end
+
+  def show
   end
 
   def edit
@@ -24,6 +27,6 @@ class InfosController < ApplicationController
   end
 
   def params_create
-    params.require('/infos').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role)
+    params.require('/infos').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
   end
 end

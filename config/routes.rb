@@ -21,16 +21,12 @@ Rails.application.routes.draw do
 
   # route mensuration
   get "/mensuration", to: "mensurations#mensuration"
-  post '/mensuration', to: 'mensurations#update'
-  get '/mensuration/:id', to: 'mensurations#show', as: 'mensuration_show'
 
   # route books
   resources :books
 
   # route archive
   get "/archive", to: "archives#archive"
-  post '/archive', to: 'archives#update'
-  get '/archive/:id', to: 'archives#show', as: 'archive_show'
 
   # route infos
   get "/infos", to: "infos#infos"

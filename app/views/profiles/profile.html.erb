@@ -1,8 +1,17 @@
 <div class="container" style="display: flex;justify-content: center;">
+  <%= console %>
   <div class="haut" style="display: flex; align-items: center; margin-top: 3rem;">
     <div>
       <% if user_signed_in? %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large" %>
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key,
+                                  height: "56",
+                                  style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
+                                  class: "avatar-large",
+                                  crop: :fill %>
+        <% else %>
+          <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar-large"/>
+        <% end %>
       <% else %>
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
       <% end %>

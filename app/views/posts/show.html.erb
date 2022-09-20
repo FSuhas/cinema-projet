@@ -4,3 +4,44 @@
 <p><%= @post.descriptif %></p>
 <p><%= @post.date.strftime("%m/%d/%Y") %></p>
 <p><%= @post.ville %></p>
+
+<div class="container" style="display: flex; justify-content: center;">
+  <div class="infos" style="width: 100%;">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
+      <strong>Voir le profile</strong>
+    </button>
+  </div>
+</div>
+
+<div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+          <h1>Mes infos:</h1>
+          <div class="infos" style="width: 100%;">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border: none; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
+              <p> <i class="fa-solid fa-cake-candles"></i> : <%= @post.user.date_de_naissance %></p>
+              <p> <i class="fa-solid fa-venus-mars"></i> : <%= @post.user.sexe %></p>
+              <p> <i class="fa-solid fa-map-location-dot"></i> : <%= @post.user.adresse %></p>
+              <p> <i class="fa-solid fa-phone"></i> : <%= @post.user.telephone %></p>
+              <p> <i class="fa-solid fa-envelope"></i> : <%= @post.user.email %></p>
+            </button>
+          </div>
+        </div>
+
+
+        <% if @post.user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key,
+                                  height: "56",
+                                  style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
+                                  class: "avatar-large",
+                                  crop: :fill %>
+        <% else %>
+          <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar-large"/>
+        <% end %>
+
+        <div class="container" style="display: flex;justify-content: center;position: absolute; bottom: 2rem;">
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit]
+  before_action :set_profile, only: [:edit]
 
   def profile
     @user = current_user
+    @user.avatar = @user.photo.key
   end
 
   def edit
@@ -25,6 +26,6 @@ class ProfilesController < ApplicationController
   end
 
   def params_create
-    params.require('/profile').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role)
+    params.require('/profile').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
   end
 end

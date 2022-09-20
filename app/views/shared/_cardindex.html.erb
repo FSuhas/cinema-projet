@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="card-trip">
-    <% @post.each do |p| %>
-      <%= link_to post_path(p) do %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= p.titre %></h2>
-          <p><%= p.descriptif %></p>
+  <% @post.each do |p| %>
+    <%= link_to post_path(p) do %>
+      <div class="card-trip" style="margin-bottom: 5px;">
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= p.titre %></h2>
+            <p><%= p.descriptif.truncate(90) %></p>
+          </div>
+          <h2 class="card-trip-pricing"><i class="fa-solid fa-location-dot"><%= p.departement %></i></h2>
         </div>
-        <h2 class="card-trip-pricing">£99.99</h2>
       </div>
-      <% end %>
     <% end %>
-  </div>
+  <% end %>
 </div>

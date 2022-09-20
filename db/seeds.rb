@@ -33,6 +33,8 @@ fabien = User.new(email: 'test@test.com',
   role: ''
 )
 
+fabien.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man"), filename: "fabien.png", content_type: "image/png")
+
 fabien.save!
 
 jessica = User.new(email: 'jessica@test.com',
@@ -66,5 +68,19 @@ jessica_post = Post.new(titre: 'Post de Jessica',
 )
 
 jessica_post.save!
+
+jessica_post_two = Post.new(titre: 'Post de Jessica 2',
+  role: 'recruteur',
+  age: '25',
+  genre: 'femme',
+  ville: 'Paris',
+  departement: '75',
+  lieux: 'Paris',
+  date: '2021-01-01',
+  descriptif: 'Bonjour, je suis Jessica et je recherche un acteur pour un court-métrage. Merci de me contacter pour plus d\'informations.',
+  user: jessica
+)
+
+jessica_post_two.save!
 
 puts "Post seed finish !"

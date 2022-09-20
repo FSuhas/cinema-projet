@@ -1,13 +1,21 @@
 <div class="navbar navbar-expand-sm">
   <div class="container-fluid" style="justify-content: flex-end;">
     <div>
-        <% if user_signed_in? %>
-            <%= link_to profile_path do %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <% end %>
-        <% else %>
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% if user_signed_in? %>
+        <%= link_to profile_path do %>
+          <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key,
+                                        height: "40",
+                                        style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
+                                        class: "avatar",
+                                        crop: :fill %>
+          <% else %>
+            <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar-large"/>
+          <% end %>
         <% end %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
     </div>
   </div>
 </div>
