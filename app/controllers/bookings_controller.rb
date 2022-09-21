@@ -6,6 +6,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.post = @post
     if @booking.save
+      mail = BookingMailer.with(booking: @booking).booking_confirmation
+      mail.deliver_now
       redirect_to post_path(@post), notice: "Votre demande a bien été envoyée"
     else
       render "posts/show", alert: "Votre demande n'a pas pu être envoyée", status: :unprocessable_entity

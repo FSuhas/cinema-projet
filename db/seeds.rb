@@ -46,7 +46,7 @@ jessica = User.new(email: 'jessica@test.com',
   date_de_naissance: '1984-07-04',
   sexe: 'Femme',
   infos: 'Trop gentille',
-  role: ''
+  role: 'Chargée de casting'
 )
 
 jessica.save!
@@ -123,4 +123,4 @@ lael_post_two.save
 
 puts "Post seed finish !"
 
-pust "Booking seed start..."
+puts "Booking seed start..."
