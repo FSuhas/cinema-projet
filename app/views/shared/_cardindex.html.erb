@@ -4,10 +4,10 @@
       <div class="card-product" style="margin-bottom: 5px;">
         <% if p.photos.attached? %>
           <% p.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 200, width: 300, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 200, width: 300, crop: :fill, class: 'card-product-img' %>
           <% end %>
         <% else %>
-            <img src="https://source.unsplash.com/random?actor"/>
+            <img src="https://source.unsplash.com/random?actor" class="card-product-img"/>
         <% end %>
         <div class="card-product-infos">
           <div>
