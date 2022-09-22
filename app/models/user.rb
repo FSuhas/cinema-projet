@@ -10,10 +10,6 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   SEXE = (["Homme", "Femme", "Autre"])
-  ROLE = (["Figuration", "Doublure", "Silhouette", "Silouette parlante", "Rôle"])
 
   validates :sexe, inclusion: { in: SEXE }
-  validates :role, inclusion: { in: ROLE }
-
-
 end
