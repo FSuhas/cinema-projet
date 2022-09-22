@@ -6,6 +6,7 @@ require 'date'
 puts "------------------------------"
 puts "----------Start seed----------"
 puts "------------------------------"
+sleep(1)
 
 puts "#destroy_all start ..."
 
@@ -126,5 +127,10 @@ lael_post_two = Post.new(titre: 'Post de Lael 2',
 lael_post_two.save
 
 puts "Post seed finish !"
+sleep(1)
 
-puts "Booking seed start..."
+puts "------------------------------"
+puts "----------Start seed----------"
+puts "------------------------------"
+
+sleep(1)
