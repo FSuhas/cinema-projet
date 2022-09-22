@@ -10,7 +10,7 @@
       <div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;" data-controller="filtre">
         <div class="gauche" >
           <div class="form-check" >
-            <input data-action="click->filtre#figuration touch-> filtre#figuration" class="form-check-input" type="checkbox" value="" id="figuration" >
+            <input data-action="click->filtre#figuration touch-> filtre#figuration" class="form-check-input" type="checkbox" value="checked" id="figuration" >
             <label class="form-check-label" for="figuration">
               Figuration
             </label>
@@ -61,14 +61,5 @@
       </div>
     </div>
   </div>
-  <p style="margin-left: 10px;">Résultas : 25/100</p>
+  <p style="margin-left: 10px;">Résultas : <%= @posts.count %>/100</p>
 </div>
-
-
-<!-- <% @posts.each do |p| %>
-  <%= simple_form_for(p) do |f| %>
-    <%= f.input :role , as: :boolean, checked_value: 'positive', unchecked_value: 'negative' %>
-      <%= f.input :role, collection: User::ROLE %>
-      <%= f.button :submit %>
-  <% end %>
-<% end %> -->

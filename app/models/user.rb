@@ -10,6 +10,5 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   SEXE = (["Homme", "Femme", "Autre"])
-
   validates :sexe, inclusion: { in: SEXE }
 end

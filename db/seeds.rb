@@ -24,13 +24,13 @@ puts "User seed start..."
 
 fabien = User.new(email: 'fabien@test.com',
   password: 'azerty',
-  nom: '',
-  prenom: '',
-  adresse: '',
-  telephone: '',
-  date_de_naissance: '',
-  sexe: '',
-  infos: '',
+  nom: 'Suhas',
+  prenom: 'Fabien',
+  adresse: '3 rue winston churchill 77100 Meaux',
+  telephone: '06.23.16.20.02',
+  date_de_naissance: '1986.08.13',
+  sexe: 'Homme',
+  infos: 'Blond grand aux yeux bleus',
   role: ''
 )
 
@@ -47,19 +47,19 @@ jessica = User.new(email: 'jessica@test.com',
   date_de_naissance: '1984-07-04',
   sexe: 'Femme',
   infos: 'Trop gentille',
-  role: 'Chargée de casting'
+  role: ''
 )
 
 jessica.save!
 
 lael = User.new(email: 'lael@test.com',
   password: 'azerty',
-  nom: '',
-  prenom: '',
-  adresse: '',
+  nom: 'Bolle Suhas',
+  prenom: 'Laël',
+  adresse: '3 rue winston chruchill 77100 Meaux',
   telephone: '',
   date_de_naissance: '',
-  sexe: '',
+  sexe: 'Homme',
   infos: '',
   role: ''
 )
@@ -71,9 +71,9 @@ sleep(1)
 puts "Post seed start..."
 
 jessica_post = Post.new(titre: 'Post de Jessica',
-  role: 'recruteur',
+  role: 'Figurant',
   age: '25',
-  genre: 'femme',
+  genre: 'Homme',
   ville: 'Paris',
   departement: '75',
   lieux: 'Paris',
@@ -87,9 +87,9 @@ jessica_post.photos.attach(io: URI.open("https://source.unsplash.com/random?actr
 jessica_post.save!
 
 jessica_post_two = Post.new(titre: 'Post de Jessica 2',
-  role: 'recruteur',
+  role: 'Doublure',
   age: '25',
-  genre: 'femme',
+  genre: 'Femme',
   ville: 'Paris',
   departement: '75',
   lieux: 'Paris',
@@ -103,7 +103,7 @@ jessica_post_two.photos.attach(io: URI.open("https://source.unsplash.com/random?
 jessica_post_two.save!
 
 lael_post = Post.new(titre: 'Post de Lael',
-  role: 'candidat',
+  role: 'Figurant',
   age: '25',
   genre: 'Homme',
   ville: 'Paris',
@@ -115,9 +115,9 @@ lael_post = Post.new(titre: 'Post de Lael',
 lael_post.save
 
 lael_post_two = Post.new(titre: 'Post de Lael 2',
-  role: 'candidat',
+  role: 'Silhouette',
   age: '25',
-  genre: 'Homme',
+  genre: 'Femme',
   ville: 'Paris',
   date: '2021-01-01',
   descriptif: 'Bonjour, je suis Lael et je recherche un recruteur pour un court-métrage. Merci de me contacter pour plus d\'informations.',
