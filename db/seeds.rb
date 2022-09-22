@@ -21,7 +21,7 @@ puts "#destroy_all finish !"
 sleep(1)
 puts "User seed start..."
 
-fabien = User.new(email: 'test@test.com',
+fabien = User.new(email: 'fabien@test.com',
   password: 'azerty',
   nom: '',
   prenom: '',
@@ -81,6 +81,8 @@ jessica_post = Post.new(titre: 'Post de Jessica',
   user: jessica
 )
 
+jessica_post.photos.attach(io: URI.open("https://source.unsplash.com/random?actrice"), filename: "jessica_post.png", content_type: "image/png")
+
 jessica_post.save!
 
 jessica_post_two = Post.new(titre: 'Post de Jessica 2',
@@ -94,6 +96,8 @@ jessica_post_two = Post.new(titre: 'Post de Jessica 2',
   descriptif: 'Bonjour, je suis Jessica et je recherche un acteur pour un court-métrage. Merci de me contacter pour plus d\'informations.',
   user: jessica
 )
+
+jessica_post_two.photos.attach(io: URI.open("https://source.unsplash.com/random?cinema"), filename: "jessica_post_two.png", content_type: "image/png")
 
 jessica_post_two.save!
 

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def candidat
     @user = current_user
-    @post = Post.all
+    @posts = Post.all
   end
 
   def profile

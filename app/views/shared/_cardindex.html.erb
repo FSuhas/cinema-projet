@@ -1,13 +1,20 @@
 <div class="container">
-  <% @post.each do |p| %>
+  <% @posts.each do |p| %>
     <%= link_to post_path(p) do %>
-      <div class="card-trip" style="margin-bottom: 5px;">
-        <div class="card-trip-infos">
+      <div class="card-product" style="margin-bottom: 5px;">
+        <% if p.photos.attached? %>
+          <% p.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 200, width: 300, crop: :fill %>
+          <% end %>
+        <% else %>
+            <img src="https://source.unsplash.com/random?actor"/>
+        <% end %>
+        <div class="card-product-infos">
           <div>
             <h2><%= p.titre %></h2>
-            <p><%= p.descriptif.truncate(90) %></p>
+            <p><%= p.descriptif.truncate(80) %></p>
           </div>
-          <h2 class="card-trip-pricing"><i class="fa-solid fa-location-dot"><%= p.departement %></i></h2>
+          <h2 class="card-trip-pricing"><i class="fa-solid fa-location-dot"><%= p.departement || p.ville || p.lieux %></i></h2>
         </div>
       </div>
     <% end %>
