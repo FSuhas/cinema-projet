@@ -3,63 +3,28 @@
 <div class="container">
   <div data-controller="toggle" class="bg-white py-1 shadow" style="cursor: pointer; border-radius: 10px;">
     <div data-action="click->toggle#toggle touch->toggle#toggle" class="d-flex" style="align-items: center; justify-content: space-between;">
-      <h3 style="margin-left: 10px;">Filters</h3>
+      <h3 style="margin-left: 10px;">Filtres</h3>
       <i data-toggle-target="caret" class="fa-solid fa-caret-down" aria-hidden="true" style="margin-right: 10px;"></i>
     </div>
     <div data-toggle-target="toggleable" class="hidden container" >
-      <div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;" data-controller="filtre">
-        <div class="gauche" >
-          <div class="form-check" >
-            <input data-action="click->filtre#figuration touch-> filtre#figuration" class="form-check-input" type="checkbox" value="checked" id="figuration" >
-            <label class="form-check-label" for="figuration">
-              Figuration
-            </label>
-          </div>
-          <div class="form-check">
-            <input data-action="click->filtre#silhouette touch-> filtre#silhouette" class="form-check-input" type="checkbox" value="" id="silhouette">
-            <label class="form-check-label" for="silhouette">
-              Silhouette
-            </label>
-          </div>
-          <div class="form-check" >
-            <input data-action="click->filtre#doublure touch-> filtre#doublure" class="form-check-input" type="checkbox" value="" id="doublure">
-            <label class="form-check-label" for="doublure">
-              Doublure
-            </label>
-          </div>
-          <div class="form-check" >
-            <input data-action="click->filtre#role touch-> filtre#role" class="form-check-input" type="checkbox" value="" id="role">
-            <label class="form-check-label" for="role">
-              Rôle
-            </label>
-          </div>
-        </div>
-        <div class="droite">
-          <div class="form-check" >
-            <input data-action="click->filtre#homme touch-> filtre#homme" class="form-check-input" type="checkbox" value="" id="homme">
-            <label class="form-check-label" for="homme">
-              Homme
-            </label>
-          </div>
-          <div class="form-check" >
-            <input data-action="click->filtre#femme touch-> filtre#femme" class="form-check-input" type="checkbox" value="" id="femme">
-            <label class="form-check-label" for="femme">
-              Femme
-            </label>
-          </div>
-        </div>
+      <div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;" data-controller="filtre" class="d-none">
+        <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a city or a department"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
       </div>
-      <div class="bas">
-        <p style="margin-top: 10px; text-align: center;">
-          <strong>Tranche d'âge</strong>
-        </p>
-          <input type="range" class="form-range" id="range">
-        <p style="text-align: center;">
-          <strong>Distance</strong>
-        </p>
-          <input type="range" class="form-range" id="range">
+      <div class="container gauche" style="display: flex; flex-direction: column;">
+        <a href="/posts?query=Figurant" class="btn btn-primary">Figuration</a>
+        <a href="/posts?query=Silouette" class="btn btn-primary">Silouette</a>
+        <a href="/posts?query=Doublure" class="btn btn-primary">Doublure</a>
+        <a href="/posts?query=Rôle" class="btn btn-primary">Rôle</a>
+        <a href="/posts" class="btn btn-secondary">Clear Filtres</a>
       </div>
     </div>
   </div>
-  <p style="margin-left: 10px;">Résultas : <%= @posts.count %>/100</p>
+  <p style="margin-left: 10px;"><small>Résultas : <%= @posts.count %> / <%= Post.all.count %></small></p>
 </div>

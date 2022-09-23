@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  resources :posts, except: [:index] do
+  resources :posts do
     resources :bookings, only: [:create, :update]
   end
-
-  # route candidat
-  get "candidat", to: "pages#candidat"
-
-  # route recruteur
-
 
   # route profile
   get "/profile", to: "profiles#profile"

@@ -4,11 +4,6 @@ class PagesController < ApplicationController
   def home
   end
 
-  def candidat
-    @user = current_user
-    @posts = Post.all
-  end
-
   def profile
     @user = current_user
   end

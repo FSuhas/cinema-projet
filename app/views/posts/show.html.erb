@@ -6,7 +6,7 @@
 <p><%= @post.ville %></p>
 
 <%= simple_form_for [@post, @booking] do |f| %>
-  <%= f.input :status, style: 'display: none !important;' %>
+  <%= f.input :books %>
   <%= f.button :submit, "Postulez", class: 'btn btn-primary' %>
 <% end %>
 
@@ -54,3 +54,5 @@
     </div>
   </div>
 </div>
+
+<%= console %>
