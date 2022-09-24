@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.post = @post
-    @booking.books = current_user.books
     if @booking.save
       mail = BookingMailer.with(booking: @booking).booking_confirmation
       mail.deliver_now
@@ -18,6 +17,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:books, :post_id, :user_id)
+    params.require(:booking).permit(:status, :post_id, :user_id)
   end
 end

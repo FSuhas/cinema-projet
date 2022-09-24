@@ -1,0 +1,9 @@
+  <% @book.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
+  <% end %>
+<%= console %>
+<div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+  <%= link_to books_path do %>
+    <i class="fa-solid fa-clapperboard" style="font-size: 50px; color: black"></i>
+  <% end %>
+</div>

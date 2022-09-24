@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
 
   def profile
     @user = current_user
-    @user.avatar = @user.photo.key
   end
 
   def edit

@@ -18,6 +18,7 @@
     <h1 style="margin-bottom: -11px;"><%= @post.titre %></h1>
     <small style="font-size: 12px;">prévue le : <%= @post.date.strftime("%m/%d/%Y") %></small>
   </div>
+
   <div class="container">
     <p><%= @post.descriptif %></p>
     <p class="card-trip-pricing" style="text-align: end;">
@@ -37,12 +38,10 @@
 
 <div class="container" style="display: flex; justify-content: center;">
   <%= simple_form_for [@post, @booking] do |f| %>
-    <%= f.input :books, label: false, style: 'd-none' %>
+    <%= f.input :status, label: false, style: 'd-none' %>
     <%= f.button :submit, "Postulez", class: 'btn btn-primary' %>
   <% end %>
 </div>
-
-
 
 
 <!-- Modal -->
@@ -71,10 +70,3 @@
     </div>
   </div>
 </div>
-
-<!-- End pages -->
-
-<%= link_to posts_path do %>
-  <i class="fa-solid fa-xmark" style="font-size: 50px; color: rgb(255, 255, 255)"></i>
-<% end %>
-<% console %>
