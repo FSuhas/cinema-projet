@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :bookings, only: [:create, :update]
   end
-  resources :bookings, only: [:destroy]
 
   # route profile
   get "/profile", to: "profiles#profile"
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'profiles#show', as: 'profile_show'
 
   # route booking
-
+  resources :bookings, only: [:destroy]
 
   # route mensuration
   get "/mensuration", to: "mensurations#mensuration"
