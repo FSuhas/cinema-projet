@@ -1,12 +1,18 @@
-<h1>My Archive</h1>
-<%= render 'shared/retourprofile' %>
+<div class="container">
+  <h1>My Archive</h1>
 
-<% @user.bookings.each do |b| %>
-  <strong><%= b.post.titre %></strong><br>
-  <small><%= b.post.descriptif.truncate(50) %></small><br>
-  <p><% if b.status === false %>
-    <span class="badge bg-danger">En attente</span>
-  <% else %>
-    <span class="badge bg-success">Accepté</span>
-  <% end %></p>
-<% end %>
+  <% @booking.each do |b| %>
+    <%= link_to post_path(b.post_id) do %>
+      <strong><%= b.post.titre %></strong><br>
+      <small><%= b.post.descriptif.truncate(50) %></small><br>
+      <p>
+        <% if b.confirmation === false %>
+        <span class="badge bg-warning">En attente</span>
+        <% else b.confirmation === true %>
+        <span class="badge bg-success">Accepté</span>
+        <% end %>
+      </p> <%= link_to "X", booking_path(b),data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %><br>
+    <% end %>
+  <% end %>
+</div>
+    <%= render 'shared/retourprofile' %>

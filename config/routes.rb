@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :bookings, only: [:create, :update]
   end
+  resources :bookings, only: [:destroy]
 
   # route profile
   get "/profile", to: "profiles#profile"
