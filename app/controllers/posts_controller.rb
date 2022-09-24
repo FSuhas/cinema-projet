@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:id])
     @booking = Booking.new
-    @books = Book.where(user_id: current_user.id)
+    @books = current_user.books
   end
 
   def new

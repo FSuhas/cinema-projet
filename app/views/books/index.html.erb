@@ -1,12 +1,24 @@
-<h1>My Books</h1>
+<div class="container" style="display: flex; justify-content: center;">
+  <h1>My Books</h1>
+</div>
 
-<% @my_books.each do |b|%>
-  <li> <%= b.id %> <%= b.titre %> </li>
-<% end %>
-
-
-<%= link_to new_book_path do %>
-  <i class="fa-solid fa-plus" style="font-size: 50px; color: black"></i>
-<% end %>
-
+<div class="container" style="display: flex;">
+  <% @books.each do |b|%>
+    <ol>
+      <% if b.photos.attached? %>
+        <%= cl_image_tag b.photo.key,
+                              height: "56",
+                              style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
+                              class: "avatar-large",
+                              crop: :fill %>
+      <% else %>
+        <i class="fa-solid fa-images"></i>
+      <% end %>
+        <p><%= b.titre %></p>
+      </ol>
+  <% end %>
+  <%= link_to new_book_path do %>
+    <i class="fa-solid fa-plus" style="font-size: 50px; color: black"></i>
+  <% end %>
+</div>
 <%= render 'shared/retourprofile' %>

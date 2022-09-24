@@ -14,7 +14,10 @@
             <h2><%= p.titre %></h2>
             <p><%= p.descriptif.truncate(80) %></p>
           </div>
-          <h2 class="card-trip-pricing"><i class="fa-solid fa-location-dot"><%= p.departement || p.ville || p.lieux %></i></h2>
+          <p class="card-trip-pricing" style="text-align: end;">
+            <span><%= p.departement || p.ville.capitalize || p.lieux.capitalize %></span>
+            <i class="fa-solid fa-location-dot"></i>
+          </p>
         </div>
       </div>
     <% end %>

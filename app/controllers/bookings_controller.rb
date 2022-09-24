@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.post = @post
+    @booking.books = current_user.books
     if @booking.save
       mail = BookingMailer.with(booking: @booking).booking_confirmation
       mail.deliver_now

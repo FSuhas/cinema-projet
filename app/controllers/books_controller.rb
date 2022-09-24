@@ -4,8 +4,7 @@ class BooksController < ApplicationController
 
   def index
     @user = current_user
-    @books = Book.all
-    @my_books = Book.where(user_id: current_user)
+    @books = Book.where(user_id: current_user)
   end
 
   def new
