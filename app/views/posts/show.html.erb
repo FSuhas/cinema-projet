@@ -1,12 +1,13 @@
 <div class="banner-post">
   <%= link_to posts_path, style: "position: fixed;right: 10px;top: 5px;" do %>
-    <i class="fa-solid fa-xmark" style="font-size: 50px; color: rgb(252, 5, 5)"></i>
+  <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
   <% end %>
   <% if @post.photos.attached? %>
     <% @post.photos.each do |photo| %>
           <%= cl_image_tag photo.key,
         class: "photo-post",
-        crop: :fill %>
+        crop: :fill,
+        effect: "art:quartz" %>
     <% end %>
   <% else %>
     <img src="https://source.unsplash.com/random?acteur" class="photo-post"/>
@@ -51,11 +52,12 @@
     <div class="modal-content" style="background-color: transparent; border: none;">
           <div class="infos" style="width: 100%;">
             <% if @post.user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key,
+              <%= cl_image_tag @post.user.photo.key,
                                       height: "56",
                                       style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
                                       class: "avatar-large",
-                                      crop: :fill %>
+                                      crop: :thumb,
+                                      gravity: "face" %>
             <% else %>
               <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar-large"/>
             <% end %>

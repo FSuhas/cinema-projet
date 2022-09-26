@@ -50,6 +50,8 @@ jessica = User.new(email: 'jessica@test.com',
   role: ''
 )
 
+jessica.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?woman"), filename: "jessica.png", content_type: "image/png")
+
 jessica.save!
 
 lael = User.new(email: 'lael@test.com',
@@ -64,7 +66,25 @@ lael = User.new(email: 'lael@test.com',
   role: ''
 )
 
+lael.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?boy"), filename: "lael.png", content_type: "image/png")
+
 lael.save!
+
+noevan = User.new(email: 'noevan@test.com',
+  password: 'azerty',
+  nom: 'Bolle Suhas',
+  prenom: 'Noëvan',
+  adresse: '3 rue winston chruchill 77100 Meaux',
+  telephone: '',
+  date_de_naissance: '',
+  sexe: 'Homme',
+  infos: '',
+  role: ''
+)
+
+noevan.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?baby"), filename: "noevan.png", content_type: "image/png")
+
+noevan.save!
 
 puts "user seed finish !"
 sleep(1)
@@ -112,6 +132,8 @@ lael_post = Post.new(titre: 'Post de Lael',
   user: lael
 )
 
+lael_post.photos.attach(io: URI.open("https://source.unsplash.com/random?acteur"), filename: "lael_post.png", content_type: "image/png")
+
 lael_post.save
 
 lael_post_two = Post.new(titre: 'Post de Lael 2',
@@ -124,13 +146,29 @@ lael_post_two = Post.new(titre: 'Post de Lael 2',
   user: lael
 )
 
+lael_post_two.photos.attach(io: URI.open("https://source.unsplash.com/random?camera"), filename: "lael_post_two.png", content_type: "image/png")
+
 lael_post_two.save
+
+noevan_post = Post.new(titre: 'Post de Noëvan',
+  role: 'Doublure',
+  age: '25',
+  genre: 'Homme',
+  ville: 'Lagny sur Marne',
+  date: '2021-01-01',
+  descriptif: 'Bonjour, je suis Noëvan et je recherche un recruteur pour un court-métrage. Merci de me contacter pour plus d\'informations.',
+  user: noevan
+)
+
+noevan_post.photos.attach(io: URI.open("https://source.unsplash.com/random?film"), filename: "noevan_post.png", content_type: "image/png")
+
+noevan_post.save
 
 puts "Post seed finish !"
 sleep(1)
 
 puts "------------------------------"
-puts "----------Start seed----------"
+puts "----------Seed end !----------"
 puts "------------------------------"
 
 sleep(1)

@@ -8,7 +8,9 @@
                                         height: "40",
                                         style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
                                         class: "avatar",
-                                        crop: :fill %>
+                                        crop: :thumb,
+                                        gravity: "face",
+                                        effect: "art:quartz" %>
           <% else %>
             <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar-large"/>
           <% end %>
