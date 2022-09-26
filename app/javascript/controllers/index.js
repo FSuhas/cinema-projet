@@ -4,11 +4,8 @@
 
 import { application } from "./application"
 
-import FiltreController from "./filtre_controller"
-application.register("filtre", FiltreController)
-
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import SweetalertController from "./sweetalert_controller"
+application.register("sweetalert", SweetalertController)
 
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)

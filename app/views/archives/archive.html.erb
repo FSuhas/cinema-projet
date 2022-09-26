@@ -11,7 +11,7 @@
         <% else b.confirmation === true %>
         <span class="badge bg-success">Accepté</span>
         <% end %>
-      </p> <%= link_to "X", booking_path(b),data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %><br>
+      </p> <%= link_to "X", booking_path(b),data: { turbo_method: :delete, turbo_confirm: "Voulez-vous retirer votre candidature ?" } %><br>
     <% end %>
   <% end %>
 </div>
