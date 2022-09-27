@@ -6,7 +6,7 @@
   <% @booking.each do |b| %>
     <hr>
     <%= link_to post_path(b.post_id) do %>
-      <div class="recap" data-controller="sweetalert">
+      <div class="recap">
         <strong><%= b.post.titre %></strong><br>
         <small><%= b.post.descriptif.truncate(50) %></small><br>
         <p>

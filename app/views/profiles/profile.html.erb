@@ -33,7 +33,11 @@
   <div class="infos" style="width: 100%;">
     <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
       <strong>Mes infos:</strong>
-      <p><%= @user.infos.truncate(120) %></p>
+      <p><% if @user.infos == nil %>
+        "Decrivez vous"
+        <% else %>
+        <%= @user.infos.truncate(120) %></p>
+      <% end %>
     </button>
   </div>
 </div>

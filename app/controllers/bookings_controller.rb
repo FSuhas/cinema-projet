@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
       mail.deliver_now
       redirect_to posts_path, notice: "Votre demande a bien été envoyée"
     else
-      redirect_to posts_path, notice: "Vous avez déja postulé à cette offre !", status: :unprocessable_entity
+      redirect_to posts_path, alert: "Vous avez déja postulé à cette offre !", status: :unprocessable_entity
     end
   end
 
