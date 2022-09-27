@@ -5,9 +5,9 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     if params[:query].present?
-      @posts = Post.search_by_query(params[:query])
+      @posts = Post.search_by_query(params[:query]).order(date: :asc)
     else
-      @posts = Post.all
+      @posts = Post.all.order(date: :asc)
     end
   end
 
