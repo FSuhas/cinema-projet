@@ -124,7 +124,7 @@ puts "Post seed start..."
 
 jessica_post = Post.new(titre: 'Post de Jessica',
   role: 'Figurant',
-  age: '25',
+  age: '20',
   genre: 'Homme',
   ville: 'Paris',
   departement: '75',
@@ -156,7 +156,7 @@ jessica_post_two.save!
 
 axel_post = Post.new(titre: 'Comédien 25 ans pub réseaux sociaux',
   role: 'Rôle',
-  age: '25',
+  age: '30',
   genre: 'Homme',
   ville: 'Paris',
   departement: '75',
@@ -179,7 +179,7 @@ axel_post.save!
 
 franck_post_two = Post.new(titre: 'Saison 2 Weekend Family',
   role: 'Figurant',
-  age: '',
+  age: '35',
   genre: 'Femme',
   ville: '',
   departement: '78',
@@ -203,7 +203,7 @@ franck_post_two.save!
 
 lael_post = Post.new(titre: 'Post de Lael',
   role: 'Figurant',
-  age: '25',
+  age: '22',
   genre: 'Homme',
   departement: '40',
   date: '2023-01-06',
@@ -217,7 +217,7 @@ lael_post.save
 
 lael_post_two = Post.new(titre: 'Post de Lael 2',
   role: 'Silhouette',
-  age: '25',
+  age: '50',
   genre: 'Femme',
   ville: 'Bayonne',
   date: '2023-02-01',
@@ -231,7 +231,7 @@ lael_post_two.save
 
 noevan_post = Post.new(titre: 'Post de Noëvan',
   role: 'Doublure',
-  age: '25',
+  age: 'tous ages',
   genre: 'Homme',
   ville: 'Lagny sur Marne',
   date: '2022-11-01',

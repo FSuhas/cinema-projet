@@ -9,8 +9,7 @@ export default class extends Controller {
       icon: "success",
       text: this.textValue,
       showConfirmButton: false,
-      timer: 2000
-
+      timer: 4000
     });
   };
 

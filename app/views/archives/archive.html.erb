@@ -2,21 +2,23 @@
   <h1>My Archive</h1>
 </div>
 
-<div class="container">
+<div class="container" >
   <% @booking.each do |b| %>
     <hr>
     <%= link_to post_path(b.post_id) do %>
-      <strong><%= b.post.titre %></strong><br>
-      <small><%= b.post.descriptif.truncate(50) %></small><br>
-      <p>
-        <% if b.confirmation === false %>
-        <span class="badge bg-warning">En attente</span>
-        <% else b.confirmation === true %>
-        <span class="badge bg-success">Accepté</span>
-        <% end %>
-      </span> <%= link_to "Retiré ma candidature", booking_path(b), class: 'badge bg-danger', data: { turbo_method: :delete, turbo_confirm: "Voulez-vous retirer votre candidature ?" } %><br>
+      <div class="recap" data-controller="sweetalert">
+        <strong><%= b.post.titre %></strong><br>
+        <small><%= b.post.descriptif.truncate(50) %></small><br>
+        <p>
+          <% if b.confirmation === false %>
+          <span class="badge bg-warning">En attente</span>
+          <% else b.confirmation === true %>
+          <span class="badge bg-success">Accepté</span>
+          <% end %>
+        </span> <%= link_to "Retiré ma candidature", booking_path(b), class: 'badge bg-danger', data: { turbo_method: :delete, turbo_confirm: "Voulez-vous retirer votre candidature ?" } %><br>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <%= render 'shared/retourprofile' %>

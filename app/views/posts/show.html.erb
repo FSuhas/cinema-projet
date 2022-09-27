@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<div class="container" style="display: flex; justify-content: center;">
+<div class="container" style="display: flex; justify-content: center;" data-controller="sweetalert">
   <%= simple_form_for [@post, @booking] do |f| %>
     <%= f.input :confirmation, label: false, style: 'd-none' %>
     <%= f.button :submit, "Postulez", class: 'btn btn-primary' %>
