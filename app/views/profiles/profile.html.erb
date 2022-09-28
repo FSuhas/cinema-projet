@@ -1,4 +1,7 @@
 <div class="container" style="display: flex;justify-content: center;">
+  <%= link_to destroy_user_session_path, style: "position: fixed; left: 3px; top:3px;" , data: {turbo_method: :delete} do %>
+    <i class="fa-solid fa-power-off" style="font-size: 20px;"></i>
+  <% end %>
   <div class="haut" style="display: flex; align-items: center; margin-top: 3rem;">
     <div>
       <% if user_signed_in? %>
