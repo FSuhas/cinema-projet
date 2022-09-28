@@ -8,16 +8,16 @@ class BookingsController < ApplicationController
     if @booking.save
       mail = BookingMailer.with(booking: @booking).booking_confirmation
       mail.deliver_now
-      redirect_to posts_path, notice: "Votre demande a bien été envoyée"
+      redirect_to posts_path, notice: "Candidature transmise avec succès"
     else
-      redirect_to posts_path, alert: "Vous avez déja postulé à cette offre !", status: :unprocessable_entity
+      redirect_to posts_path, alert: "Candidature déjà en cours...", status: :unprocessable_entity
     end
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     if @booking.destroy
-      redirect_to archive_path, alert: "Votre demande a bien été supprimée"
+      redirect_to archive_path, alert: "Vous avez retiré votre candidature"
     end
   end
 
