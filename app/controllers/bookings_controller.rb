@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     if @booking.destroy
-      redirect_to archive_path, alert: "Vous avez retiré votre candidature"
+      redirect_to archive_path, alert: "Supprimer le books ?"
     end
   end
 
