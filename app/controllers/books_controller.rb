@@ -14,8 +14,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user = current_user
-    @book.save
-    redirect_to books_path
+    if @book.save
+      redirect_to books_path, notice: "Books ajouté avec succès"
+    else
+      redirect_to books_path, alert: "Votre books n'a pu être ajouté", status: :unprocessable_entity
+    end
   end
 
   def show
@@ -43,5 +46,4 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find(params[:id])
   end
-
 end
