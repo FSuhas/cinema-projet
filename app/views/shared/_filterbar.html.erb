@@ -10,16 +10,14 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Find a city or a department"
+            placeholder: "Find by department"
           %>
           <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
       </div>
       <div class="container gauche" style="display: flex; flex-direction: column;">
-        <a href="/posts?query=Figurant" class="btn btn-primary">Figuration</a>
-        <a href="/posts?query=Silouette" class="btn btn-primary">Silouette</a>
-        <a href="/posts?query=Doublure" class="btn btn-primary">Doublure</a>
-        <a href="/posts?query=Rôle" class="btn btn-primary">Rôle</a>
+        <a href="/posts?query=Homme" class="btn btn-primary">Homme</a>
+        <a href="/posts?query=Femme" class="btn btn-primary">Femme</a>
         <a href="/posts" class="btn btn-secondary">Clear Filtres</a>
       </div>
     </div>
