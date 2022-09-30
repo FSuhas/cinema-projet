@@ -8,7 +8,7 @@
       <% @book.photos.each_with_index do |photo, i| %>
         <div class="item <%= i == 0 ? 'active' : 's-none' %> ">
           <hr>
-          <%= cl_image_tag photo.key,  width: 350, crop: :scale %>
+          <%= cl_image_tag photo.key,  width: 350, crop: :lfill %>
           <hr>
         </div>
       <% end %>
