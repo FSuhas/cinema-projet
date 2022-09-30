@@ -5,17 +5,14 @@
 
 <div class="container" style="display: grid;grid-template-columns: 1fr 1fr 1fr;align-items: center;justify-items: center;">
   <% @books.each do |b|%>
-    <div class="card-book" style="display: flex;width: 96%;flex-direction: column;align-items: center;border-radius: 10px;margin: 4px;justify-content: space-around;">
-      <%= link_to book_path(b), style: 'margin: 3px; display: flex;flex-direction: column; align-items: center;' do %>
-      <%= link_to book_path(b), style: "align-self: flex-start;position: relative;top: 3px;right: -3px;", data: { turbo_method: :delete, turbo_confirm: "Supprimé ce book ?" } do %>
+  <div class="card-book" style="display: flex;width: 96%;flex-direction: column;align-items: center;border-radius: 10px;margin: 4px;justify-content: center;">
+    <%= link_to book_path(b), style: "align-self: flex-start;position: relative;top: 3px;right: -3px;", data: { turbo_method: :delete, turbo_confirm: "Supprimé ce book ?" } do %>
         <i class="fa-solid fa-trash" style="font-size: 20px; color: black"></i>
       <% end %>
-          <%= cl_image_tag b.photos.first.key,
-                      crop: :fill,
-                      width: 60 %>
-      <% end %>
+    <%= link_to book_path(b), style: 'margin: 3px; display: flex;flex-direction: column; align-items: center;' do %>
+        <i class="fa-solid fa-clapperboard" style="font-size: 50px; color: black"></i>
       <small><%= b.titre.truncate(12).capitalize %></small>
-
+    <% end %>
     </div>
   <% end %>
 
