@@ -3,7 +3,7 @@
   <br><br><br><br><br>
 </div>
 
-<div class="container" style="display: flex;justify-content: center;flex-direction: column;align-items: center;"></div>
+<div class="container" style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <% @book.photos.each_with_index do |photo, i| %>
         <div class="item <%= i == 0 ? 'active' : 's-none' %> ">
