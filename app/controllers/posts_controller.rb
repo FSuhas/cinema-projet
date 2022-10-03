@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[show]
+  before_action :set_role, only: %i[index]
 
   def index
     @user = current_user
@@ -42,6 +43,13 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_role
+    if current_user.role == ""
+      current_user.role = "candidat"
+      current_user.save
+    end
   end
 
   def post_params

@@ -1,7 +1,17 @@
 class CandidatsController < ApplicationController
+  before_action :set_role, only: %i[index]
 
   def index
     @user = current_user
     @candidats = User.where(role: "candidat")
+  end
+
+  private
+
+  def set_role
+    if current_user.role == ""
+      current_user.role = "recruteur"
+      current_user.save
+    end
   end
 end
