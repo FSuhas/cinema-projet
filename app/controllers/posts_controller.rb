@@ -16,10 +16,26 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:id])
     @booking = Booking.new
-    @books = current_user.books
   end
 
   def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @post.user = current_user
+    if @post.save
+      redirect_to posts_path, notice: "Post créé avec succès"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to archive_path, notice: "Post supprimé"
   end
 
   private

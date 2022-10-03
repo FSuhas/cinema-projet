@@ -1,8 +1,14 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:edit]
+  before_action :set_profile, only: [:edit, :show]
 
-  def profile
+  def index
     @user = current_user
+    @candidats = User.where(role: "candidat")
+  end
+
+  def show
+    @user = current_user
+
   end
 
   def edit

@@ -47,7 +47,7 @@ jessica = User.new(email: 'jessica@test.com',
   date_de_naissance: '1984-07-04',
   sexe: 'Femme',
   infos: 'Trop gentille',
-  role: ''
+  role: 'candidat'
 )
 
 jessica.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?woman"), filename: "jessica.png", content_type: "image/png")
@@ -63,7 +63,7 @@ axel = User.new(email: 'ngagecast@gmail.com',
   date_de_naissance: '',
   sexe: 'Homme',
   infos: 'Chargée de recrutement',
-  role: ''
+  role: 'recruteur'
 )
 
 axel.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man"), filename: "axel.png", content_type: "image/png")
@@ -79,7 +79,7 @@ franck = User.new(email: 'jouardcasting@icloud.com',
   date_de_naissance: '',
   sexe: 'Homme',
   infos: 'Chargée de recrutement',
-  role: ''
+  role: 'recruteur'
 )
 
 franck.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?boy"), filename: "franck.png", content_type: "image/png")
@@ -95,7 +95,7 @@ lael = User.new(email: 'lael@test.com',
   date_de_naissance: '2016-01-18',
   sexe: 'Homme',
   infos: 'Beau petit garçon',
-  role: ''
+  role: 'candidat'
 )
 
 lael.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?"), filename: "lael.png", content_type: "image/png")
@@ -111,7 +111,7 @@ noevan = User.new(email: 'noevan@test.com',
   date_de_naissance: '2020-10-04',
   sexe: 'Homme',
   infos: 'Il est pas grand mais il est costaud',
-  role: ''
+  role: 'candidat'
 )
 
 noevan.photo.attach(io: URI.open("https://source.unsplash.com/random?man"), filename: "noevan.png", content_type: "image/png")
@@ -124,7 +124,7 @@ puts "Post seed start..."
 
 jessica_post = Post.new(titre: 'Post de Jessica',
   role: 'Figurant',
-  age: '20',
+  age: '18-25',
   genre: 'Homme',
   ville: 'Paris',
   departement: '75',
@@ -140,7 +140,7 @@ jessica_post.save!
 
 jessica_post_two = Post.new(titre: 'Post de Jessica 2',
   role: 'Doublure',
-  age: '25',
+  age: '25-35',
   genre: 'Femme',
   ville: 'Meaux',
   departement: '77',
@@ -156,7 +156,7 @@ jessica_post_two.save!
 
 axel_post = Post.new(titre: 'Comédien 25 ans pub réseaux sociaux',
   role: 'Rôle',
-  age: '30',
+  age: '25-35',
   genre: 'Homme',
   ville: 'Paris',
   departement: '75',
@@ -179,7 +179,7 @@ axel_post.save!
 
 franck_post_two = Post.new(titre: 'Saison 2 Weekend Family',
   role: 'Figurant',
-  age: '35',
+  age: '18-90',
   genre: 'Femme',
   ville: '',
   departement: '78',
@@ -203,7 +203,7 @@ franck_post_two.save!
 
 lael_post = Post.new(titre: 'Post de Lael',
   role: 'Figurant',
-  age: '22',
+  age: '18-25',
   genre: 'Homme',
   departement: '40',
   date: '2023-01-06',
@@ -217,7 +217,7 @@ lael_post.save
 
 lael_post_two = Post.new(titre: 'Post de Lael 2',
   role: 'Silhouette',
-  age: '50',
+  age: '45-55',
   genre: 'Femme',
   ville: 'Bayonne',
   date: '2023-02-01',
@@ -231,7 +231,7 @@ lael_post_two.save
 
 noevan_post = Post.new(titre: 'Post de Noëvan',
   role: 'Doublure',
-  age: 'tous ages',
+  age: '18-90',
   genre: 'Homme',
   ville: 'Lagny sur Marne',
   date: '2022-11-01',

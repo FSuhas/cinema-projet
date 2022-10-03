@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :update]
   end
 
+  # route candidat
+  resources :candidats, only: [:index]
+
   # route profile
-  get "/profile", to: "profiles#profile"
-  post '/profile', to: 'profiles#update'
-  get '/profile/:id', to: 'profiles#show', as: 'profile_show'
+  resources :profiles, except: %i[destroy new create]
 
   # route booking
   resources :bookings, only: [:destroy]
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
 
   # route archive
   get "/archive", to: "archives#archive"
+  patch "/archive", to: "archives#update"
 
   # route infos
   get "/infos", to: "infos#infos"

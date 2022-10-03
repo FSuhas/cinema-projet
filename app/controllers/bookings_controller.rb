@@ -8,9 +8,24 @@ class BookingsController < ApplicationController
     if @booking.save
       # mail = BookingMailer.with(booking: @booking).booking_confirmation
       # mail.deliver_now
-      redirect_to posts_path, notice: "Candidature transmise avec succès"
+      if current_user.role == ""
+        current_user.role = "candidat"
+        current_user.save
+      else
+        redirect_to posts_path, notice: "Candidature transmise avec succès"
+      end
     else
       redirect_to posts_path, alert: "Candidature déjà en cours...", status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.confirmation = true
+    if @booking.save
+      redirect_to archive_path, notice: "Candidature acceptée"
+    else
+      redirect_to archive_path, alert: "Erreur"
     end
   end
 
@@ -18,6 +33,8 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     if @booking.destroy
       redirect_to archive_path, alert: "Candidature retirée"
+    else
+      redirect_to archive_path, alert: "Erreur"
     end
   end
 

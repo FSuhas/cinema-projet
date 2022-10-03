@@ -2,7 +2,7 @@
   <div class="container-fluid" style="justify-content: flex-end;">
     <div>
       <% if user_signed_in? %>
-        <%= link_to profile_path do %>
+        <%= link_to profiles_path do %>
           <% if @user.photo.attached? %>
             <%= cl_image_tag @user.photo.key,
                                         height: "40",

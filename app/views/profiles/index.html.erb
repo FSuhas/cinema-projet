@@ -1,0 +1,141 @@
+<div class="container" style="display: flex;justify-content: center;">
+  <%= link_to destroy_user_session_path, style: "position: fixed; left: 3px; top:3px;" , data: {turbo_method: :delete} do %>
+    <i class="fa-solid fa-power-off" style="font-size: 20px;"></i>
+  <% end %>
+  <div class="haut" style="display: flex; align-items: center; margin-top: 3rem;">
+    <div>
+      <% if user_signed_in? %>
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key,
+                                  height: "70",
+                                  style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
+                                  class: "avatar-large",
+                                  crop: :thumb,
+                                  gravity: "face" %>
+        <% else %>
+          <img src="https://source.unsplash.com/random?man" style="height: 70px; width: 70px" class="avatar-large"/>
+        <% end %>
+      <% else %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
+    </div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#nom" style="border: none; display: flex;align-items: center;">
+      <div class="fullname">
+        <p style="margin-bottom: 0;"> <%= @user.prenom %> </p>
+        <p style="margin-bottom: 0;"> <%= @user.nom %> </p>
+      </div>
+        <i class="fa-solid fa-pen-to-square" style="margin-left: 10px; margin-top: -40px;"></i>
+    </button>
+  </div>
+</div>
+
+
+<!-- Mes infos -->
+
+<div class="container" style="display: flex; justify-content: center;position: fixed;bottom: 55%">
+  <div class="infos" style="width: 100%;">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
+      <strong>Mes infos:</strong>
+      <p><% if @user.infos == nil %>
+        "Decrivez vous"
+        <% else %>
+        <%= @user.infos.truncate(120) %></p>
+      <% end %>
+    </button>
+  </div>
+</div>
+
+<!-- Groupe boutton -->
+
+<div class="container" style="position: fixed;bottom: 25%;display: grid;grid-template-columns: 1fr 1fr;" >
+  <% if @user.role === 'candidat' %>
+    <%= link_to infos_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+      <i class="fa-solid fa-id-card" style="font-size: 50px; color: black;"></i>
+      <p>My Infos</p>
+    <% end %>
+
+    <%= link_to archive_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+      <i class="fa-solid fa-folder-open" style="font-size: 50px; color: black;"></i>
+      <p>My Folder</p>
+    <% end %>
+
+    <%= link_to books_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+      <i class="fa-solid fa-images" style="font-size: 50px; color: black;"></i>
+      <p>My Books</p>
+    <% end %>
+
+    <%= link_to mensuration_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+      <i class="fa-solid fa-person" style="font-size: 50px; color: black;"></i>
+      <p>My Size</p>
+    <% end %>
+  <% else %>
+    <%= link_to archive_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+      <i class="fa-solid fa-folder-open" style="font-size: 50px; color: black;"></i>
+      <p>My Folder</p>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- Boutton back -->
+<% if current_user.role === 'candidat' %>
+  <%= render 'shared/retourposts' %>
+<% else %>
+  <%= render 'shared/retourcandidats' %>
+<% end %>
+
+
+<!-- Modal -->
+
+<!-- Nom Prenom -->
+
+<div class="modal fade" id="nom" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Edit </h2>
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :prenom,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Prenom" %>
+            <%= f.input :nom,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Nom" %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Infos -->
+
+<div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Edit </h2>
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :infos,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Tes infos",
+                        input_html: { autocomplete: "infos" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

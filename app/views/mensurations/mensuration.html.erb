@@ -2,4 +2,13 @@
   <h1>Mes mensurations</h1>
   <br><br><br><br><br>
 </div>
+<div class="container">
+  <% if @user.sexe == 'Homme' %>
+    <img src="" alt="">
+    <p>Homme</p>
+  <% else %>
+    <img src="" alt="">
+    <p>Femme</p>
+  <% end %>
+</div>
 <%= render 'shared/retourprofile' %>
