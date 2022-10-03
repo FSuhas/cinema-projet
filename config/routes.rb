@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:destroy]
 
   # route mensuration
-  get "/mensuration", to: "mensurations#mensuration"
+  resources :mensurations, only: %i[index show]
 
   # route books
   resources :books

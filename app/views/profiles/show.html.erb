@@ -1,1 +1,53 @@
+<div class="head">
+  <% if @profile.photo.attached? %>
+    <%= cl_image_tag @profile.photo.key, class: "profile-photo",
+                                      width: '500' %>
+  <% else %>
+    <img src="https://source.unsplash.com/random?man" style="height: 15rem; width: 70px" class="avatar-large"/>
+  <% end %>
+</div>
+<div class="container" style="display: flex;flex-direction: column;align-items: center;">
+  <h2><%= @profile.prenom %> <%= @profile.nom %></h2>
+  <small><%= @profile.infos %></small>
+  <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;">
+    <strong >Plus d'infos</strong>
+  </button>
+  <br>
+</div>
+<div class="container" style="display: flex;justify-content: center;align-items: center;">
+  <h2>Books</h2>
+</div>
+<hr>
+<div class="container" style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;align-items: center;justify-items: center;">
+  <% @profile.books.each do |b| %>
+    <div class="card-book" style="display: flex;width: 96%;flex-direction: column;align-items: center;border-radius: 10px;margin: 4px;justify-content: center;">
+      <%= link_to book_path(b) do %>
+        <i class="fa-solid fa-image" style="font-size: 50px; color: black"></i>
+        <% end %>
+          <small><%= b.titre.truncate(12).capitalize %></small>
+    </div>
+  <% end %>
+</div>
+<hr>
 <%= render 'shared/retourcandidats' %>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true" style="top: 0px">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: transparent; border: none;">
+          <div class="infos" style="width: 100%;">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border: none; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
+              <p> <i class="fa-solid fa-cake-candles"></i> : <%= @profile.date_de_naissance %></p>
+              <p> <i class="fa-solid fa-phone"></i> : <%= @profile.telephone %></p>
+              <p> <i class="fa-solid fa-envelope"></i> : <%= @profile.email %></p>
+              <p> <i class="fa-solid fa-map-marker"></i> : <%= @profile.adresse %></p>
+              <%= link_to mensuration_path do %>
+                <i class="fa-solid fa-person"></i>
+              <% end %>
+            </button>
+          </div>
+    </div>
+  </div>
+</div>
