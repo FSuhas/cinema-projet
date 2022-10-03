@@ -5,7 +5,7 @@
 <div class="container" >
   <% @bookings.each do |b| %>
     <% if b.confirmation == false %>
-      <hr>
+      <p><strong>Pour :</strong> <%= b.post.titre.truncate(30) %></p>
       <%= link_to profile_path(b.user_id) do %>
         <div class="card-product">
           <% if b.user.photo.attached? %>
