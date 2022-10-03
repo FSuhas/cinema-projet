@@ -3,7 +3,12 @@ class CandidatsController < ApplicationController
 
   def index
     @user = current_user
-    @candidats = User.where(role: "candidat")
+    @count = User.where(role: "candidat").count
+    if params[:query].present?
+      @candidats = User.where(role: "candidat").search_by_query(params[:query])
+    else
+      @candidats = User.where(role: "candidat")
+    end
   end
 
   private

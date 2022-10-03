@@ -1,0 +1,26 @@
+<div class="container">
+  <div data-controller="toggle" class="bg-white py-1 shadow" style="cursor: pointer; border-radius: 10px;">
+    <div data-action="click->toggle#toggle touch->toggle#toggle" class="d-flex" style="align-items: center; justify-content: space-between;">
+      <p style="margin-left: 10px;margin-bottom: 0;">Filtres</p>
+      <i data-toggle-target="caret" class="fa-solid fa-caret-down" aria-hidden="true" style="margin-right: 10px;"></i>
+    </div>
+    <div data-toggle-target="toggleable" class="hidden container" >
+      <div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;" data-controller="filtre" class="">
+        <%= form_with url: candidats_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find by department"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="container gauche" style="display: flex; flex-direction: column;">
+        <a href="/candidats?query=Homme" class="btn btn-primary">Homme</a>
+        <a href="/candidats?query=Femme" class="btn btn-primary">Femme</a>
+        <a href="/candidats" class="btn btn-secondary">Clear Filtres</a>
+      </div>
+    </div>
+  </div>
+  <p style="margin-left: 10px;"><small>Résultas : <%= @candidats.count %> / <%= @count %></small></p>
+</div>

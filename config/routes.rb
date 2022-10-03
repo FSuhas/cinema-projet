@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # route candidat
   resources :candidats, only: [:index]
 
+  # route candidature
+  resources :candidatures, only: %i[index], as: :candidatures
+
   # route profile
   resources :profiles, except: %i[destroy new create]
 

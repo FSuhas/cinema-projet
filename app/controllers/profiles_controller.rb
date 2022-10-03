@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   def index
     @user = current_user
     @candidats = User.where(role: "candidat")
+    @booking = Booking.where(confirmation: false).first
   end
 
   def show

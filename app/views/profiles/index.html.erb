@@ -69,9 +69,13 @@
       <p>My Size</p>
     <% end %>
   <% else %>
-    <%= link_to archive_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
-      <i class="fa-solid fa-folder-open" style="font-size: 50px; color: black;"></i>
-      <p>My Folder</p>
+    <%= link_to candidatures_path, style: 'display: flex; flex-direction: column; align-items: center;' do %>
+      <% if @booking.nil? == true %>
+        <i class="fa-solid fa-folder" style="font-size: 50px; color: black;"></i>
+      <% else %>
+        <i class="fa-solid fa-folder-open" style="font-size: 50px; color: black;"></i>
+      <% end %>
+      <p>Candidature</p>
     <% end %>
   <% end %>
 </div>

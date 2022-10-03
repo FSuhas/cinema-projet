@@ -11,4 +11,12 @@ class User < ApplicationRecord
 
   SEXE = (["Homme", "Femme", "Autre"])
   validates :sexe, inclusion: { in: SEXE }
+
+  include PgSearch::Model
+
+  pg_search_scope :search_by_query,
+  against: [ :sexe ],
+    using: {
+    tsearch: { prefix: true }
+  }
 end
