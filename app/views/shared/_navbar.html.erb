@@ -1,23 +1,45 @@
-<div class="navbar navbar-expand-sm">
-  <div class="container-fluid" style="justify-content: flex-end;">
-    <div>
-      <% if user_signed_in? %>
-        <%= link_to profiles_path do %>
-          <% if @user.photo.attached? %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "/posts", class: "navbar-brand" do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <% if @user.photo.attached? %>
             <%= cl_image_tag @user.photo.key,
                                         height: "40",
                                         style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
-                                        class: "avatar",
+                                        class: "avatar dropdown-toggle",
+                                        id: "navbarDropdown",
                                         crop: :thumb,
                                         gravity: "face",
-                                        effect: "art:quartz" %>
+                                        effect: "art:quartz",
+                                        data: { bs_toggle: "dropdown" },
+                                        'aria-haspopup': true,
+                                        'aria-expanded': false %>
           <% else %>
-            <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar"/>
+            <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false/>
           <% end %>
-        <% end %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      <% end %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Mon Profile", "/profiles", class: "dropdown-item" %>
+              <%= link_to "Mes Books", "/books", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+            </div>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
     </div>
   </div>
 </div>
