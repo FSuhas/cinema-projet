@@ -3,64 +3,192 @@
     body.style = 'height: calc(100vh); background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
   }
 </script>
-<div class="container" style="display: flex;justify-content: center;align-items: center;">
-  <h1>Mes infos</h1>
-  <br><br><br><br><br>
-</div>
+
+<%= render 'shared/navbar' %>
+
+
 <div class="container">
-  <div class="infos" style="width: 100%;">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border: none; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
-      <p> <i class="fa-solid fa-cake-candles"></i> : <%= @user.date_de_naissance %></p>
-      <p> <i class="fa-solid fa-venus-mars"></i> : <%= @user.sexe %></p>
-      <p> <i class="fa-solid fa-map-location-dot"></i> : <%= @user.adresse %></p>
-      <p> <i class="fa-solid fa-phone"></i> : <%= @user.telephone %></p>
-      <p> <i class="fa-solid fa-envelope"></i> : <%= @user.email %></p>
+  <div class="head" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+
+    <button type="button" data-bs-toggle="modal" data-bs-target="#name">
+    <strong id="fullname"><%= @user.prenom %> <%= @user.nom %>
+        <i class="fa-solid fa-pen-to-square"></i>
+      </strong>
+      </button>
+
+
+      <button type="button" data-bs-toggle="modal" data-bs-target="#avatar">
+        <small>Changer la photo de profile</small>
+        <i class="fa-solid fa-pen-to-square"></i>
+      </button>
+
+
+      <strong style="display: flex;justify-content: center;align-items: center;">Infos persos</strong>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#infos">
+    <div class="infos-perso" >
+      <p><i class="fa-solid fa-cake-candles"></i> : <%= @user.date_de_naissance %></p>
+      <p><i class="fa-solid fa-location-dot"></i> : <%= @user.adresse %></p>
+      <p><i class="fa-solid fa-mobile-screen"></i> : <%= @user.telephone %></p>
+      <p><i class="fa-solid fa-at"></i> : <%= @user.email %></p>
+        <i class="fa-solid fa-pen-to-square"></i>
+      </div>
     </button>
+
+
+    <strong>Description :</strong>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#bio">
+    <div class="desciptif">
+      <p><%= @user.infos %></p>
+        <i class="fa-solid fa-pen-to-square"></i>
+      </div>
+    </button>
+
+    <%= link_to mensurations_path do %>
+      <button type="button" class="btn btn-primary">Mes mensurations</button>
+    <% end %>
+  </div>
+
+</div>
+
+
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="bio" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Decrivez-vous : </h2>
+        <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :infos,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.infos,
+                        input_html: { autocomplete: "bio" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Modal Infos -->
-
-<div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+<div class="modal fade" id="avatar" tabindex="-1" aria-labelledby="avatarLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="container">
         <h2>Edit </h2>
         <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
+            <%= f.input :photo,
+                        as: :file,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.photo,
+                        input_html: { autocomplete: "bio" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Vos information personnels : </h2>
+        <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
             <%= f.input :date_de_naissance,
                         as: :date,
                         required: true,
                         html5: true,
-                        label: false %>
+                        label: "Date de naissance" %>
             <%= f.input :sexe,
                         collection: User::SEXE,
-                        label: false,
                         required: true,
-                        placeholder: "Genre" %>
+                        label: "Genre" %>
             <%= f.input :adresse,
                         required: true,
-                        label: false,
-                        placeholder: "3 rue de ..." %>
+                        label: 'Adresse',
+                        placeholder: @user.adresse %>
             <%= f.input :telephone,
-                        label: false,
+                        label: 'Téléphone',
                         required: true,
-                        placeholder: "06.xx.xx.xx.xx" %>
+                        placeholder: @user.telephone %>
             <%= f.input :email,
-                        label: false,
+                        label: 'Email',
                         required: true,
-                        placeholder: "exemple@gmail.com" %>
+                        placeholder: @user.email %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Update", class: 'btn btn-primary' %>
           </div>
         <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="name" tabindex="-1" aria-labelledby="nameLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Vous êtes ? </h2>
+        <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :prenom,
+                        required: false,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.prenom,
+                        input_html: { autocomplete: @user.prenom } %>
+            <%= f.input :nom,
+                        required: false,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.nom,
+                        input_html: { autocomplete: @user.nom } %>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
       </div>
     </div>
   </div>
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Bouton retour si besoin -->
+
+<!--
 <% if current_user.role === 'candidat' %>
   <%= render 'shared/retourposts' %>
 <% else %>
@@ -69,4 +197,4 @@
     <i class="fa-solid fa-clapperboard" style="font-size: 50px; color: black"></i>
   <% end %>
 </div>
-<% end %>
+<% end %> -->

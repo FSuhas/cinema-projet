@@ -3,26 +3,27 @@
     body.style = 'height: calc(100vh); background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
   }
 </script>
+
+<%= render 'shared/navbar' %>
+
+<br><br><br>
+
 <div class="container" style="display: flex;justify-content: center;align-items: center;">
-  <h1>Mes archives</h1>
-  <br><br><br><br><br>
-</div>
-<div class="container" >
-  <% @bookings.each do |b| %>
-    <hr>
-    <%= link_to post_path(b.post_id) do %>
-      <div class="recap">
-        <strong><%= b.post.titre %></strong><br>
-        <small><%= b.post.descriptif.truncate(50) %></small><br>
-          <% if b.confirmation === false %>
-            <span class="badge bg-warning">En attente</span>
-            </span> <%= link_to "Retiré ma candidature", booking_path(b), class: 'badge bg-danger', data: { turbo_method: :delete, turbo_confirm: "Êtes vous sûrs?" } %><br>
-          <% else b.confirmation === true %>
-            <span class="badge bg-success">Accepté</span>
-          <% end %>
+  <div class="container" >
+    <% @bookings.each do |b| %>
+      <hr>
+      <%= link_to post_path(b.post_id) do %>
+        <div class="recap">
+          <strong><%= b.post.titre %></strong><br>
+          <small><%= b.post.descriptif.truncate(50) %></small><br>
+            <% if b.confirmation === false %>
+              <span class="badge bg-warning">En attente</span>
+              </span> <%= link_to "Retiré ma candidature", booking_path(b), class: 'badge bg-danger', data: { turbo_method: :delete, turbo_confirm: "Êtes vous sûrs?" } %><br>
+            <% else b.confirmation === true %>
+              <span class="badge bg-success">Accepté</span>
+            <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
-
-<%= render 'shared/retourprofile' %>

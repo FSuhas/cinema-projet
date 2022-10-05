@@ -1,18 +1,22 @@
 <%= render 'shared/navbar' %>
+
 <div class="banner-post">
-  <%= link_to posts_path, style: "position: fixed;right: 10px;top: 5px;" do %>
-  <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
-  <% end %>
+
   <% if @post.photos.attached? %>
     <% @post.photos.each do |photo| %>
+    <%= link_to posts_path, style: "position: fixed;" do %>
+    <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+  <% end %>
           <%= cl_image_tag photo.key,
         class: "photo-post",
         crop: :fill,
         effect: "art:quartz" %>
+
     <% end %>
   <% else %>
     <img src="https://source.unsplash.com/random?acteur" class="photo-post"/>
   <% end %>
+
 </div>
 
 <div class="container">
@@ -38,12 +42,6 @@
   </div>
 </div>
 
-<div class="container" style="display: flex; justify-content: center;">
-  <%= simple_form_for [@post, @booking] do |f| %>
-    <%= f.input :confirmation, label: false, style: 'd-none' %>
-    <%= f.button :submit, "Postulez", class: 'btn btn-primary' %>
-  <% end %>
-</div>
 
 <!-- Modal -->
 
@@ -68,4 +66,11 @@
           </div>
     </div>
   </div>
+</div>
+
+<div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+  <%= simple_form_for [@post, @booking] do |f| %>
+    <%= f.input :confirmation, label: false, style: 'd-none' %>
+    <%= f.button :submit, "Postulez", class: 'btn btn-primary' %>
+  <% end %>
 </div>
