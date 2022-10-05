@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :books
   has_one_attached :photo
 
-  SEXE = ['Homme', 'Femme', 'Autre']
-  validates :sexe, inclusion: { in: SEXE }
+  # SEXE = ['Homme', 'Femme', 'Autre']
+  # validates :sexe, inclusion: { in: SEXE }
 
   include PgSearch::Model
 

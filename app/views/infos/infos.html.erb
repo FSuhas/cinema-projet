@@ -118,7 +118,7 @@
                         html5: true,
                         label: "Date de naissance" %>
             <%= f.input :sexe,
-                        collection: User::SEXE,
+                        collection: ["Homme", "Femme", "Autre"],
                         required: true,
                         label: "Genre" %>
             <%= f.input :adresse,
