@@ -89,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_152701) do
     t.string "adresse"
     t.string "telephone"
     t.date "date_de_naissance"
-    t.string "sexe"
+    t.string "sexe", default: "Autre"
     t.string "infos"
     t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true

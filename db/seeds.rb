@@ -28,8 +28,8 @@ fabien = User.new(email: 'fabien@test.com',
   prenom: 'Fabien',
   adresse: '3 rue winston churchill 77100 Meaux',
   telephone: '06.23.16.20.02',
+  sexe: :Homme,
   date_de_naissance: '1986.08.13',
-  sexe: 'Homme',
   infos: 'Blond grand aux yeux bleus',
   role: ''
 )
@@ -38,19 +38,32 @@ fabien.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man
 
 fabien.save!
 
-jessica = User.new(email: 'jessica@test.com',
+jean = User.new(email: 'jean@test.com',
   password: 'azerty',
-  nom: 'Bolle',
-  prenom: 'Jessica',
-  adresse: '3 rue winston chruchill 77100 Meaux',
-  telephone: '06.19.75.78.56',
-  date_de_naissance: '1984-07-04',
-  sexe: 'Femme',
-  infos: 'Trop gentille',
-  role: 'candidat'
+  nom: '',
+  prenom: '',
+  adresse: '',
+  telephone: '',
+  sexe: :Homme,
+  date_de_naissance: '',
+  infos: '',
+  role: ''
 )
 
-jessica.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?woman"), filename: "jessica.png", content_type: "image/png")
+jean.save!
+
+jessica = User.new(email: 'jessica@test.com',
+  password: 'azerty',
+  nom: '',
+  prenom: '',
+  adresse: '',
+  telephone: '',
+  sexe: :Femme,
+  date_de_naissance: '',
+  infos: '',
+  role: ''
+)
+
 
 jessica.save!
 
@@ -60,8 +73,8 @@ axel = User.new(email: 'ngagecast@gmail.com',
   prenom: 'Axel',
   adresse: 'Paris',
   telephone: '',
+  sexe: :Homme,
   date_de_naissance: '',
-  sexe: 'Homme',
   infos: 'Chargée de recrutement',
   role: 'recruteur'
 )
@@ -76,8 +89,8 @@ franck = User.new(email: 'jouardcasting@icloud.com',
   prenom: 'Franck',
   adresse: '78',
   telephone: '',
+  sexe: :Homme,
   date_de_naissance: '',
-  sexe: 'Homme',
   infos: 'Chargée de recrutement',
   role: 'recruteur'
 )
@@ -92,8 +105,8 @@ lael = User.new(email: 'lael@test.com',
   prenom: 'Laël',
   adresse: '3 rue winston chruchill 77100 Meaux',
   telephone: '06.23.16.20.02',
+  sexe: :Homme,
   date_de_naissance: '2016-01-18',
-  sexe: 'Homme',
   infos: 'Beau petit garçon',
   role: 'candidat'
 )
@@ -108,8 +121,8 @@ noevan = User.new(email: 'noevan@test.com',
   prenom: 'Noëvan',
   adresse: '3 rue winston chruchill 77100 Meaux',
   telephone: '06.23.16.20.02',
+  sexe: :Homme,
   date_de_naissance: '2020-10-04',
-  sexe: 'Homme',
   infos: 'Il est pas grand mais il est costaud',
   role: 'candidat'
 )

@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def create
     @post = Post.find(params[:post_id])
     @booking = Booking.new(booking_params)

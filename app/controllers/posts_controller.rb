@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def show
     @user = current_user
     @post = Post.find(params[:id])
@@ -46,10 +45,8 @@ class PostsController < ApplicationController
   end
 
   def set_role
-    if current_user.role == ""
       current_user.role = "candidat"
       current_user.save
-    end
   end
 
   def post_params
