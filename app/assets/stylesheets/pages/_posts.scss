@@ -8,3 +8,10 @@
 #booking_confirmation {
   display: none;
 }
+
+.fixed {
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(13.7px);
+}

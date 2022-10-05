@@ -14,7 +14,7 @@
           <li class="nav-item dropdown">
             <% if @user.photo.attached? %>
             <%= cl_image_tag @user.photo.key,
-                                        height: "40",
+                                        height: "50",
                                         style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
                                         class: "avatar dropdown-toggle",
                                         id: "navbarDropdown",
@@ -28,9 +28,9 @@
             <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false/>
           <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Mon Profile", "/profiles", class: "dropdown-item" %>
+              <%= link_to "Mes infos", "/infos", class: "dropdown-item" %>
               <%= link_to "Mes Books", "/books", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Mes Candidatures", "/archive", class: "dropdown-item" %>
               <%= link_to "Log out", "/posts", class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>

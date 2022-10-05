@@ -1,3 +1,9 @@
+<script>
+  if (window.location.pathname == '/profiles') {
+    body.style = 'height: calc(100vh); background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
+  }
+</script>
+
 <div class="container" style="display: flex;justify-content: center;">
   <%= link_to destroy_user_session_path, style: "position: fixed; left: 3px; top:3px;" , data: {turbo_method: :delete} do %>
     <i class="fa-solid fa-power-off" style="font-size: 20px;"></i>

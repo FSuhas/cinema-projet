@@ -11,7 +11,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body id="body" style="background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);">
     <%= render "shared/flashes" %>
     <%= yield %>
   </body>

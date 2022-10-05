@@ -1,3 +1,8 @@
+<script>
+  if (window.location.pathname == '/infos') {
+    body.style = 'height: calc(100vh); background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
+  }
+</script>
 <div class="container" style="display: flex;justify-content: center;align-items: center;">
   <h1>Mes infos</h1>
   <br><br><br><br><br>
@@ -57,7 +62,7 @@
 
 
 <% if current_user.role === 'candidat' %>
-  <%= render 'shared/retourprofile' %>
+  <%= render 'shared/retourposts' %>
 <% else %>
 <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
   <%= link_to profiles_path(@user) do %>
