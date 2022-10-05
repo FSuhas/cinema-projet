@@ -13,5 +13,7 @@
   z-index: 1;
   position: sticky;
   top: 0;
-  backdrop-filter: blur(13.7px);
+  backdrop-filter: blur(40px);
+  border-bottom: 1px solid white;
+  margin-bottom: 3px;
 }
