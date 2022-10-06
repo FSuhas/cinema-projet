@@ -45,8 +45,8 @@ class PostsController < ApplicationController
   end
 
   def set_role
-      current_user.role = "candidat"
-      current_user.save
+    current_user.role = "candidat"
+    current_user.save
   end
 
   def post_params

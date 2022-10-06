@@ -22,9 +22,50 @@
       </div>
     <% end %>
 
-    <%= link_to new_book_path, style: 'margin: 3px; display: flex;flex-direction: column; align-items: center;' do %>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#add-book" style="margin: 3px; display: flex;flex-direction: column; align-items: center;border: none;font-size:15px;background: none;">
       <i class="fa-solid fa-plus" style="font-size: 40px; color: black"></i>
       <small>Ajouter</small>
-    <% end %>
+    </button>
+  </div>
 </div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="add-book" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Nouveau Book : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 90%;">
+        <%= simple_form_for @book, data: { turbo_method: "post" } do |f| %>
+          <div class="form-inputs">
+            <%= f.input :titre,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Titre du book",
+                        input_html: { autocomplete: "titre" } %>
+            <%= f.input :photos,
+                        as: :file,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Photos",
+                        hint: "Selectionner une ou plusieurs photos",
+                        input_html: { multiple: true } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

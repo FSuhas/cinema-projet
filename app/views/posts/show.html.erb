@@ -22,8 +22,9 @@
     <hr>
   </div>
 
-  <% if @post.user.infos? || @post.user.prenom? || @post.user.nom? %>
+  <% if @post.user.prenom? || @post.user.nom? %>
     <div style="text-align: center; padding: 5px;"><strong>A propos :</strong></div>
+
     <div class="descriptif">
       <small><%= @post.user.prenom %> <%= @post.user.nom %></small>
       <small><%= @post.user.infos %></small>

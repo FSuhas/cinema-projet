@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   def index
     @user = current_user
     @books = Book.where(user_id: current_user)
+    @book = Book.new
   end
 
   def new
