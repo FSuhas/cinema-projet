@@ -1,7 +1,22 @@
 <script>
   if (window.location.pathname == '/candidatures') {
-    body.style = 'height: calc(120vh); background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
+    body.style = 'height: calc(100vh) !important; background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
   }
+
+  let scrollpos = window.scrollY
+  const header = document.querySelector("#body")
+  const header_height = header.offsetHeight
+
+  const add_class_on_scroll = () => header.classList.add("fade-in")
+  const remove_class_on_scroll = () => header.classList.remove("fade-in")
+
+  window.addEventListener('scroll', function() {
+    scrollpos = window.scrollY;
+
+    if (scrollpos <= header_height) { add_class_on_scroll() }
+    else { remove_class_on_scroll() }
+
+  })
 </script>
 
 <%= render 'shared/navbar' %>
