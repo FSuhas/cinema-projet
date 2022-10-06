@@ -46,11 +46,19 @@
   </div>
 </div>
 
-<div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
-  <%= simple_form_for [@post, @booking] do |f| %>
-    <%= f.input :confirmation, label: false, style: 'd-none' %>
-    <%= f.button :submit, "Postulez", class: ' button' %>
-  <% end %>
-</div>
+<% if (@user.nom.nil? || @user.nom == '') || (@user.prenom.nil? || @user.prenom == '') || (@user.adresse.nil? || @user.adresse == '') || (@user.date_de_naissance.nil? || @user.date_de_naissance == '') %>
+  <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+    <%= link_to infos_path, class: ' button' do %>
+      Personnaliser votre profil
+    <% end %>
+  </div>
+<% else %>
+  <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+    <%= simple_form_for [@post, @booking] do |f| %>
+      <%= f.input :confirmation, label: false, style: 'd-none' %>
+      <%= f.button :submit, "Postulez", class: ' button' %>
+    <% end %>
+  </div>
+<% end %>
 
 <%= render 'shared/footer' %>
