@@ -1,32 +1,29 @@
+<script>
+  if (window.location.pathname == '/candidatures') {
+    body.style = 'height: calc(100vh); background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
+  }
+</script>
+
+<%= render 'shared/navbar' %>
+
+<br><br><br>
+
 <div class="container" style="display: flex;justify-content: center;align-items: center;">
-  <h1>Candidature en attente</h1>
-  <br><br><br><br><br>
-</div>
-<div class="container" >
-  <% @bookings.each do |b| %>
-    <% if b.confirmation == false %>
-      <p><strong>Pour :</strong> <%= b.post.titre.truncate(30) %></p>
-      <%= link_to profile_path(b.user_id) do %>
-        <div class="card-product">
-          <% if b.user.photo.attached? %>
-            <%= cl_image_tag b.user.photo.key,
-                                          height: 100,
-                                          class: "card-img-top",
-                                          style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" %>
-          <% else %>
-            <img src="https://source.unsplash.com/random?profile?food" style="height: 100;" class="card-img-top"/>
-          <% end %>
-          <div class="">
-            <h2 style="display: flex;justify-content: center;align-items: center;"><%= b.user.prenom %> <%= b.user.nom %></h2>
-            <small style="display: flex;justify-content: center;align-items: center;">Consulter le profile</small>
-            <div class="btn">
-              <%= link_to "Decline", booking_path(b), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-secondary' %>
-              <%= link_to "Acceptez", post_booking_path(@posts, b), data: { turbo_method: "patch" }, class: 'btn btn-primary' %>
-            </div>
-          </div>
-        </div>
+  <div class="container" >
+    <% @bookings.each do |b| %>
+      <hr>
+      <%= link_to post_path(b.post_id) do %>
+        <div class="recap">
+          <strong><%= b.post.titre %></strong><br>
+          <small><%= b.post.descriptif.truncate(50) %></small><br>
+            <% if b.confirmation === false %>
+              <span class="badge bg-warning">En attente</span>
+              </span> <%= link_to "Retiré ma candidature", booking_path(b), class: 'badge bg-danger', data: { turbo_method: :delete, turbo_confirm: "Êtes vous sûrs?" } %><br>
+            <% else b.confirmation === true %>
+              <span class="badge bg-success">Accepté</span>
+            <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
-<%= render 'shared/retour' %>

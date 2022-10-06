@@ -1,12 +1,8 @@
 class ArchivesController < ApplicationController
   def archive
     @user = current_user
-    if current_user.role == "recruteur"
-      @bookings = Booking.where(post_id: @user.posts)
-      @posts = Post.where(user_id: @user)
-    else
-      @bookings = Booking.where(user_id: @user.id)
-    end
+    @bookings = Booking.where(post_id: @user.posts)
+    @posts = Post.where(user_id: @user)
   end
 
   def update

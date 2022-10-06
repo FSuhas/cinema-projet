@@ -2,7 +2,6 @@ class InfosController < ApplicationController
   before_action :set_infos, only: [:show, :edit]
 
   def infos
-    @user = current_user
   end
 
   def show

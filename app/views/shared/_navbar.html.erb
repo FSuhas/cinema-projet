@@ -29,11 +29,12 @@
               <img src="https://img.icons8.com/officel/344/circled-user-male-skin-type-6.png" style="height: 50px;background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
             <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Trouver un job", '/posts', class: "dropdown-item" %>
-                <%= link_to "Mes infos", "/infos", class: "dropdown-item" %>
+                <%= link_to "Trouver un Job", '/posts', class: "dropdown-item" %>
+                <%= link_to "Mon Profil", "/profiles", class: "dropdown-item" %>
+                <%= link_to "Mes Mensurations", "/mensurations", class: "dropdown-item" %>
                 <%= link_to "Mes Books", "/books", class: "dropdown-item" %>
-                <%= link_to "Mes Candidatures", "/archive", class: "dropdown-item" %>
-                <%= link_to "Log out" , destroy_user_session_path , class: "dropdown-item", data: {turbo_method: :delete} %>
+                <%= link_to "Mes Candidatures", "/candidatures", class: "dropdown-item" %>
+                <%= link_to "Se Déconnecter" , destroy_user_session_path , class: "dropdown-item", data: {turbo_method: :delete} %>
               </div>
             </li>
           <%# else %>
