@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :books
   has_one_attached :photo
 
+  validates :nom, presence: true
+  validates :prenom, presence: true
   # SEXE = ['Homme', 'Femme', 'Autre']
   # validates :sexe, inclusion: { in: SEXE }
 
