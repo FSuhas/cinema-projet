@@ -11,52 +11,58 @@
   <strong>informations importantes</strong>
   <hr>
 
-  <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-    <p>Nom : <strong><%= @user.nom %></strong></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#nom" style="border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
-    </button>
+  <div class="container">
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Nom : <strong><%= @user.nom %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#nom" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Prénom : <strong><%= @user.prenom %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#prenom" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Adresse : <strong><%= @user.adresse %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#adresse" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Date de naissance : <strong><%= @user.date_de_naissance.strftime("%d/%m/%Y") %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#date" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
   </div>
-  <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-    <p>Prénom : <strong><%= @user.prenom %></strong></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#prenom" style="border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
-    </button>
-  </div>
-  <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-    <p>Adresse : <strong><%= @user.adresse %></strong></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#adresse" style="border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
-    </button>
-  </div>
-  <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-    <p>Date de naissance : <strong><%= @user.date_de_naissance %></strong></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#date" style="border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
-    </button>
-  </div>
+
   <br>
   <strong>informations complémentaires</strong>
   <hr>
 
-  <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-    <p>Photo de profil</p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#photo" style="border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
-    </button>
+  <div class="container">
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Photo de profil</p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#photo" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Téléphone : <strong><%= @user.telephone %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#telephone" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Email : <strong><%= @user.email %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#email" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
   </div>
-  <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-    <p>Numéro de téléphone : <strong><%= @user.telephone %></strong></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#telephone" style="border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
-    </button>
-  </div>
-  <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-    <p>Email : <strong><%= @user.email %></strong></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#email" style="border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
-    </button>
-  </div>
+
   <br>
   <strong>Description</strong>
   <hr>
