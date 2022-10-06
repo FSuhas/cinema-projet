@@ -47,7 +47,7 @@
   </div>
   <div style="display: flex;justify-content: space-between;align-items: flex-start;">
     <p>Numéro de téléphone : <strong><%= @user.telephone %></strong></p>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#phone" style="border: none;font-size:15px;background: none;">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#telephone" style="border: none;font-size:15px;background: none;">
       <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
     </button>
   </div>
@@ -76,121 +76,260 @@
 
 <!-- Modal -->
 
-<div class="modal fade" id="bio" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+<!-- Nom -->
+
+<div class="modal fade" id="nom" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="container">
-        <h2>Decrivez-vous : </h2>
-        <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Votre nom : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 60%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
-            <%= f.input :infos,
+            <%= f.input :nom,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: @user.infos,
-                        input_html: { autocomplete: "bio" } %>
+                        placeholder: @user.nom,
+                        input_html: { autocomplete: "nom" } %>
           </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
           </div>
+          <br><br>
         <% end %>
-        <%= link_to "Back", :back %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="avatar" tabindex="-1" aria-labelledby="avatarLabel" aria-hidden="true">
+<!-- Prenom -->
+
+<div class="modal fade" id="prenom" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="container">
-        <h2>Edit </h2>
-        <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Votre prénom : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 60%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :prenom,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.prenom,
+                        input_html: { autocomplete: "prenom" } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Adresse -->
+
+<div class="modal fade" id="adresse" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Votre adresse : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 60%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :adresse,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.adresse,
+                        input_html: { autocomplete: "adresse" } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Date de naissance -->
+
+<div class="modal fade" id="date" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Votre Date de Naissance : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 60%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :date_de_naissance,
+                        as: :date,
+                        html5: true,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        input_html: { autocomplete: "date de naissance" } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Photo -->
+
+<div class="modal fade" id="photo" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Votre plus beau profil : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 50%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
             <%= f.input :photo,
                         as: :file,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: @user.photo,
-                        input_html: { autocomplete: "bio" } %>
+                        input_html: { autocomplete: "photo" } %>
           </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
           </div>
+          <br><br>
         <% end %>
-        <%= link_to "Back", :back %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Telephone -->
+
+<div class="modal fade" id="telephone" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Votre Numéro de Téléphone : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 50%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :telephone,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.telephone,
+                        input_html: { autocomplete: "telephone" } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email -->
+
+<div class="modal fade" id="email" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Votre adresse Email : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 60%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.email,
+                        input_html: { autocomplete: "email" } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Descriptif -->
+
 
 <div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="container">
-        <h2>Vos information personnels : </h2>
-        <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Décrivez-vous : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 90%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
-            <%= f.input :date_de_naissance,
-                        as: :date,
+            <%= f.input :infos,
                         required: true,
-                        html5: true,
-                        label: "Date de naissance" %>
-            <%= f.input :sexe,
-                        collection: ["Homme", "Femme", "Autre"],
-                        required: true,
-                        label: "Genre" %>
-            <%= f.input :adresse,
-                        required: true,
-                        label: 'Adresse',
-                        placeholder: @user.adresse %>
-            <%= f.input :telephone,
-                        label: 'Téléphone',
-                        required: true,
-                        placeholder: @user.telephone %>
-            <%= f.input :email,
-                        label: 'Email',
-                        required: true,
-                        placeholder: @user.email %>
+                        autofocus: true,
+                        label: false,
+                        placeholder: @user.infos,
+                        input_html: { autocomplete: "infos" } %>
           </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
           </div>
+          <br><br>
         <% end %>
-        <%= link_to "Back", :back %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="name" tabindex="-1" aria-labelledby="nameLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="container">
-        <h2>Vous êtes ? </h2>
-        <%= simple_form_for(infos_path, data: {turbo_method: 'post'}) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :prenom,
-                        required: false,
-                        autofocus: true,
-                        label: false,
-                        placeholder: @user.prenom,
-                        input_html: { autocomplete: @user.prenom } %>
-            <%= f.input :nom,
-                        required: false,
-                        autofocus: true,
-                        label: false,
-                        placeholder: @user.nom,
-                        input_html: { autocomplete: @user.nom } %>
-          <div class="form-actions">
-            <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-        <%= link_to "Back", :back %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%= render 'shared/retour' %>

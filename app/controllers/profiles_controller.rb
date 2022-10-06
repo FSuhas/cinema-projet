@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:edit, :show]
+  before_action :set_profile, only: [:edit, :show,]
 
   def index
     @user = current_user
@@ -15,12 +15,12 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @user = current_user
     if current_user.update(params_create)
-      redirect_to profile_path
+      redirect_to profiles_path
       flash[:notice] = "Mis à jour avec succès"
     else
-      render profile_path, status: :unprocessable_entity
-      flash[:notice] = "Veuillez remplir tous les champs"
+      alert[:notice] = "Une erreur est survenue"
     end
   end
 
@@ -31,6 +31,6 @@ class ProfilesController < ApplicationController
   end
 
   def params_create
-    params.require('/profile').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
+    params.require('/profiles').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
   end
 end

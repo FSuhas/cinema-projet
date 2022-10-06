@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # route profile
   resources :profiles, except: %i[destroy new create]
+  post '/profiles', to: 'profiles#update'
 
   # route booking
   resources :bookings, only: [:destroy]

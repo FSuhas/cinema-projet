@@ -4,6 +4,8 @@
   }
 </script>
 
+<%= render 'shared/navbar' %>
+
 <div class="container" style="display: flex;justify-content: center;align-items: center;">
   <% if @user.sexe == 'Homme' %>
     <img src="" alt="">
@@ -13,6 +15,3 @@
     <p>Femme</p>
   <% end %>
 </div>
-
-
-<%= render 'shared/retour' %>
