@@ -87,12 +87,8 @@
 </div>
 
 <!-- Boutton back -->
-<% if current_user.role === 'candidat' %>
-  <%= render 'shared/retourposts' %>
-<% else %>
-  <%= render 'shared/retourcandidats' %>
-<% end %>
 
+<%= render 'shared/retour' %>
 
 <!-- Modal -->
 

@@ -14,10 +14,6 @@
           <div class="form-actions">
             <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
           </div>
-        <% end %>
+<% end %>
 
-<div class="container" style="display: flex;justify-content: center;position: absolute; bottom: 2rem;">
-  <%= link_to books_path do %>
-    <i class="fa-solid fa-clapperboard" style="font-size: 50px; color: black"></i>
-  <% end %>
-</div>
+<%= render 'shared/retour' %>
