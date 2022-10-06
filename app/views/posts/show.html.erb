@@ -1,7 +1,6 @@
 <%= render 'shared/navbar' %>
 
 <div class="banner-post">
-
   <% if @post.photos.attached? %>
     <% @post.photos.each do |photo| %>
       <%= link_to 'javascript:history.back()', style: "position: fixed;" do %>
@@ -19,56 +18,39 @@
 
 <div class="container">
   <div class="tire" style="text-align: center; padding: 5px;">
-    <h1 style="margin-bottom: -11px;"><%= @post.titre %></h1>
-    <small style="font-size: 12px;">prévue le : <%= @post.date.strftime("%m/%d/%Y") %></small>
+    <h3 style="margin-bottom: -11px;"><%= @post.titre %></h3>
+    <hr>
   </div>
 
-  <div class="container">
-    <p><%= @post.descriptif %></p>
-    <p class="card-trip-pricing" style="text-align: end;">
-      <span><%= @post.departement || @post.ville.capitalize || @post.lieux.capitalize %></span>
-      <i class="fa-solid fa-location-dot"></i>
-    </p>
-  </div>
-</div>
-
-<div class="container" style="display: flex; justify-content: center;">
-  <div class="infos" style="width: 100%;">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border-radius: 10px; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
-      <strong>Voir les informations</strong>
-    </button>
-  </div>
-</div>
-
-
-<!-- Modal -->
-
-<div class="modal fade" id="infos" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true" style="top: 60px">
-  <div class="modal-dialog">
-    <div class="modal-content" style="background-color: transparent; border: none;">
-          <div class="infos" style="width: 100%;">
-            <% if @post.user.photo.attached? %>
-              <%= cl_image_tag @post.user.photo.key,
-                                      height: "56",
-                                      style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))",
-                                      class: "avatar-large",
-                                      crop: :thumb,
-                                      gravity: "face" %>
-            <% else %>
-              <img src="https://source.unsplash.com/random?man" style="height: 56px; width: 56px" class="avatar-large"/>
-            <% end %>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="border: none; margin-top: 1rem; margin-bottom: 1rem;width: 100%;">
-              <p> <i class="fa-solid fa-phone"></i> : <%= @post.user.telephone %></p>
-              <p> <i class="fa-solid fa-envelope"></i> : <%= @post.user.email %></p>
-            </button>
-          </div>
+  <% if @post.user.infos? || @post.user.prenom? || @post.user.nom? %>
+    <div style="text-align: center; padding: 5px;"><strong>A propos :</strong></div>
+    <div class="descriptif">
+      <small><%= @post.user.prenom %> <%= @post.user.nom %></small>
+      <small><%= @post.user.infos %></small>
     </div>
+    <br>
+  <% end %>
+
+  <div style="text-align: center; padding: 5px;"><strong>Resumé :</strong></div>
+
+  <div class="resume">
+    <small>Je cherche un(e) : <%= @post.genre %> <br>
+    Dans le département : <%= @post.departement %> <br>
+    Pour le : <%= @post.date.strftime("%m/%d/%Y") %> </small>
+  </div>
+  <br>
+  <div style="text-align: center; padding: 5px;"><strong>Descriptif :</strong></div>
+
+  <div class="descriptif">
+    <p><%= @post.descriptif %></p>
   </div>
 </div>
 
 <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
   <%= simple_form_for [@post, @booking] do |f| %>
     <%= f.input :confirmation, label: false, style: 'd-none' %>
-    <%= f.button :submit, "Postulez", class: 'btn btn-primary' %>
+    <%= f.button :submit, "Postulez", class: ' button' %>
   <% end %>
 </div>
+
+<%= render 'shared/footer' %>

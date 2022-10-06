@@ -1,0 +1,35 @@
+.button {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  // padding: 12px 24px;
+  border: 0px solid #290bb3;
+  border-radius: 8px;
+  background: #731eff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#731eff), to(#290bb3));
+  background: -moz-linear-gradient(top, #731eff, #290bb3);
+  background: linear-gradient(to bottom, #731eff, #290bb3);
+  -webkit-box-shadow: #a01515 0px 0px 40px 0px;
+  -moz-box-shadow: #a01515 0px 0px 40px 0px;
+  box-shadow: #a01515 0px 0px 40px 0px;
+  text-shadow: #a01515 1px 1px 1px;
+  font: normal normal bold 25px verdana;
+  color: #ffffff;
+  text-decoration: none;
+}
+.button:hover,
+.button:focus {
+  border: 0px solid #2e0cc7;
+  background: #8a24ff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#8a24ff), to(#310dd7));
+  background: -moz-linear-gradient(top, #8a24ff, #310dd7);
+  background: linear-gradient(to bottom, #8a24ff, #310dd7);
+  color: #ffffff;
+  text-decoration: none;
+}
+.button:active {
+  background: #290bb3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#290bb3), to(#290bb3));
+  background: -moz-linear-gradient(top, #290bb3, #290bb3);
+  background: linear-gradient(to bottom, #290bb3, #290bb3);
+}

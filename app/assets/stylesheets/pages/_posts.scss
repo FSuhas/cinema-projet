@@ -1,7 +1,7 @@
 .photo-post {
   width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-  height: 170px;
+  height: 140px;
   object-fit: cover;
 }
 
@@ -16,4 +16,31 @@
   backdrop-filter: blur(40px);
   border-bottom: 1px solid white;
   margin-bottom: 5px;
+}
+
+.resume {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.26);
+  border-radius: 16px;
+  box-shadow: 3px 4px 9px 0px #918888;
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  flex-direction: column;
+}
+
+.descriptif {
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.26);
+  border-radius: 16px;
+  box-shadow: 3px 4px 9px 0px #918888;
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  flex-direction: column;
 }

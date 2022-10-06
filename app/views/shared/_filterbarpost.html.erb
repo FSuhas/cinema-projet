@@ -5,7 +5,7 @@
       <i data-toggle-target="caret" class="fa-solid fa-caret-down" aria-hidden="true" style="margin-right: 10px;"></i>
     </div>
     <div data-toggle-target="toggleable" class="hidden container" >
-      <div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;" data-controller="filtre" class="">
+      <div style="display: flex; flex-wrap: wrap;justify-content: space-evenly;" data-controller="filtre" class="d-none">
         <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query,
             params[:query],
@@ -15,10 +15,16 @@
           <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
       </div>
-      <div class="container gauche" style="display: flex; flex-direction: column;">
-        <a href="/posts?query=Homme" class="btn btn-primary">Homme</a>
-        <a href="/posts?query=Femme" class="btn btn-primary">Femme</a>
-        <a href="/posts" class="btn btn-secondary">Clear Filtres</a>
+      <div class="container gauche" style="display: flex;flex-direction: row;justify-content: space-around;">
+        <%= link_to "/posts?query=Homme", style: 'display: flex;align-items: center;flex-direction: column;' do %>
+          <i class="fa-solid fa-person" style="font-size: 30px;"></i>Homme
+        <% end %>
+        <%= link_to "/posts?query=Femme", style: 'display: flex;align-items: center;flex-direction: column;' do %>
+        <i class="fa-solid fa-person-dress" style="font-size: 30px;"></i>Femme
+        <% end %>
+        <%= link_to "/posts", style: 'display: flex;align-items: center;flex-direction: column;' do %>
+        <i class="fa-solid fa-circle-xmark" style="font-size: 30px;"></i>Clear
+        <% end %>
       </div>
     </div>
   </div>
