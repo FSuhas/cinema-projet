@@ -29,20 +29,25 @@
     <p>Pour le : <%= b.post.date.strftime("%m/%y") %></p>
     <hr>
       <%= link_to post_path(b.post_id) do %>
-        <div class="card-product" style="margin-bottom: 20px;padding: 10px;justify-content: space-between">
-          <strong><%= b.post.titre %></strong><br>
-          <small><%= b.post.descriptif.truncate(40) %></small><br>
+        <div class="card-candidat" style="margin-bottom: 20px;">
+          <% if b.post.photos.attached? %>
+            <%= cl_image_tag b.post.photos[0].key, height: 150, width: 327, crop: :fill %>
+          <% else %>
+            <%= image_tag "https://images.unsplash.com/random?", height: 150, width: 327, crop: :fill %>
+          <% end %>
+          <div class="card-candidat-info">
+            <strong><%= b.post.titre %></strong><br>
               <% if b.confirmation === false %>
                 <div>
                   <span class="badge bg-warning">En attente</span>
                   <%= link_to booking_path(b), id: 'trash', data: { turbo_method: :delete, turbo_confirm: "Êtes vous sûrs?" } do %>
-                    <i class="fas fa-trash"></i>
+                  <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
                   <% end %>
                 </div>
                 <% else b.confirmation === true %>
                 <span class="badge bg-success">Accepté</span>
               <% end %>
-          <hr>
+            </div>
         </div>
       <% end %>
     <% end %>

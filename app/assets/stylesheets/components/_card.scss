@@ -95,3 +95,35 @@
   -webkit-backdrop-filter: blur(5.7px);
   border: 1px solid rgba(255, 255, 255, 0.9);
 }
+
+.card-candidat {
+  overflow: hidden;
+  height: 150px;
+  border-radius: 16px;
+  box-shadow: 3px 4px 9px 0px #918888;
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  margin-bottom: 5px;
+}
+
+.card-candidat-info {
+  position: absolute;
+  z-index: 1000;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  height: -webkit-fill-available;
+  flex-direction: column;
+  justify-content: space-between;
+  #trash {
+    .fa-solid {
+      top: 10px;
+      position: absolute;
+      font-size: 30px;
+      color: rgb(252, 5, 5);
+      right: 0;
+    }
+  }
+
+}
