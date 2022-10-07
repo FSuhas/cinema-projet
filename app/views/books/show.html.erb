@@ -1,19 +1,12 @@
+<%= render 'shared/navbar' %>
 <div class="container" style="display: flex;justify-content: center;align-items: center;">
   <h1><%= @book.titre.capitalize %></h1>
-  <br><br><br><br><br>
+  <br><br><br><br><br><br>
 </div>
 
-<div class="container" style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <% @book.photos.each_with_index do |photo, i| %>
-        <div class="item <%= i == 0 ? 'active' : 's-none' %> ">
-          <hr>
-          <%= cl_image_tag photo.key,  width: 350, crop: :lfill %>
-          <hr>
-        </div>
+<div class="container" id="carrousel">
+      <% @book.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, class: 'el',  width: 350, crop: :lfill %>
       <% end %>
-    </div>
     <br><br><br>
 </div>
-
-<%= render 'shared/retour' %>

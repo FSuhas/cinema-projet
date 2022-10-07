@@ -40,20 +40,29 @@
 
 .card-product {
   overflow: hidden;
-  height: 100px;
+  height: 150px;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.26);
+  background: linear-gradient(to top, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
   border-radius: 16px;
   box-shadow: 3px 4px 9px 0px #918888;
   backdrop-filter: blur(5.7px);
   -webkit-backdrop-filter: blur(5.7px);
   border: 1px solid rgba(255, 255, 255, 0.9);
+  margin-bottom: 5px;
+}
+
+.card-product-infos {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-product img {
   // height: 100%;
-  width: 120px;
+  width: 150px;
   object-fit: cover;
 }
 

@@ -1,10 +1,10 @@
 <div class="container" data-filtre-target="filtrable">
   <% @posts.each do |p| %>
     <%= link_to post_path(p) do %>
-      <div class="card-product" style="margin-bottom: 5px;">
+      <div class="card-product">
         <% if p.photos.attached? %>
           <% p.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 200, width: 300, crop: :fill, effect: "art:quartz", class: 'card-product-img' %>
+            <%= cl_image_tag photo.key, height: 150, crop: :fill, effect: "art:quartz", class: 'card-product-img' %>
           <% end %>
         <% else %>
             <img src="https://source.unsplash.com/random?actor" class="card-product-img"/>

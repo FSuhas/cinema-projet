@@ -1,6 +1,6 @@
 <script>
   if (window.location.pathname == '/profiles') {
-    body.style = 'height: calc(100%); background: linear-gradient(110deg, rgb(184 184 184) 10%, rgb(255 255 255) 50%, rgba(184 184 184) 90%);';
+    body.style = 'height: calc(100%); background: linear-gradient(to top, #ada996, #f2f2f2, #dbdbdb, #eaeaea);';
   }
 </script>
 
@@ -11,27 +11,27 @@
   <strong>informations importantes</strong>
   <hr>
 
-  <div class="container">
+  <div class="container" id="container-strong">
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Nom : <strong><%= @user.nom %></strong></p>
+      <p>Nom : <strong id="strong-blue"><%= @user.nom %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#nom" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Prénom : <strong><%= @user.prenom %></strong></p>
+      <p>Prénom : <strong id="strong-blue"><%= @user.prenom %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#prenom" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Adresse : <strong><%= @user.adresse %></strong></p>
+      <p>Adresse : <strong id="strong-blue"><%= @user.adresse %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#adresse" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Date de naissance : <strong><%= @user.date_de_naissance.strftime("%d/%m/%Y") %></strong></p>
+      <p>Date de naissance : <strong id="strong-blue"><%= @user.date_de_naissance.strftime("%d/%m/%Y") %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#date" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
@@ -42,7 +42,7 @@
   <strong>informations complémentaires</strong>
   <hr>
 
-  <div class="container">
+  <div class="container" id="container-strong">
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
       <p>Photo de profil</p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#photo" style="border: none;font-size:15px;background: none;">
@@ -50,13 +50,13 @@
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Téléphone : <strong><%= @user.telephone %></strong></p>
+      <p>Téléphone : <strong id="strong-red"><%= @user.telephone %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#telephone" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Email : <strong><%= @user.email %></strong></p>
+      <p>Email : <strong id="strong-red"><%= @user.email %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#email" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
@@ -67,7 +67,7 @@
   <strong>Description</strong>
   <hr>
 
-  <div class="card-book" style="display: flex;height:auto;/* align-items: center; */justify-content: space-around;">
+  <div class="card-book" id="container-strong" style="display: flex;height:auto;/* align-items: center; */justify-content: space-around;">
       <p style="padding: 15px;"><%= @user.infos %></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#infos" style="position: fixed;border: none;background: none;bottom: 0;right: 0;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>

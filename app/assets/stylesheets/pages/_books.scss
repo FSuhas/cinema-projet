@@ -1,0 +1,11 @@
+#carrousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.el {
+  scroll-snap-align: center;
+  flex: none;
+  margin: 0 20px;
+}
