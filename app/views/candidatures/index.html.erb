@@ -40,7 +40,7 @@
               <% if b.confirmation === false %>
                 <div>
                   <span class="badge bg-warning">En attente</span>
-                  <%= link_to booking_path(b), id: 'trash', data: { turbo_method: :delete, turbo_confirm: "Êtes vous sûrs?" } do %>
+                  <%= link_to booking_path(b), id: 'trash', data: { turbo_method: :delete, turbo_confirm: "Souhaitez-vous retirer vôtre candidature ?" } do %>
                   <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
                   <% end %>
                 </div>
