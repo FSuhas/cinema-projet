@@ -1,15 +1,16 @@
-<%= render 'shared/navbar' %>
-<div class="container" style="display: flex;justify-content: center;align-items: center;">
-  <h1><%= @book.titre.capitalize %></h1>
-  <br><br><br><br><br>
-  <%= link_to 'javascript:history.back()', style: "position: absolute;right: 10px;" do %>
-        <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
-      <% end %>
-</div>
+<div class="main">
+  <div class="container" style="display: flex;justify-content: center;align-items: center;">
+    <h1><%= @book.titre.capitalize %></h1>
+    <br><br><br><br><br>
+    <%= link_to 'javascript:history.back()', style: "position: absolute;top: 10px;right: 10px;" do %>
+          <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+        <% end %>
+  </div>
 
-<div class="container" id="carrousel">
-      <% @book.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, class: 'el',  width: 350, crop: :lfill %>
-      <% end %>
-    <br><br><br>
+  <div class="container" id="carrousel">
+        <% @book.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class: 'el',  width: 350, crop: :lfill %>
+        <% end %>
+      <br><br><br>
+  </div>
 </div>
