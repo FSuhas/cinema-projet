@@ -31,12 +31,12 @@
       <%= link_to post_path(b.post_id) do %>
         <div class="card-candidat" style="margin-bottom: 20px;">
           <% if b.post.photos.attached? %>
-            <%= cl_image_tag b.post.photos[0].key, height: 150, width: 327, crop: :fill %>
+            <%= cl_image_tag b.post.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
           <% else %>
-            <%= image_tag "https://images.unsplash.com/random?", height: 150, width: 327, crop: :fill %>
+            <%= image_tag "https://images.unsplash.com/random?", height: 150 , class: 'candidat-photo', crop: :fill %>
           <% end %>
           <div class="card-candidat-info">
-            <strong><%= b.post.titre %></strong><br>
+            <strong id="titre"><%= b.post.titre %></strong><br>
               <% if b.confirmation === false %>
                 <div>
                   <span class="badge bg-warning">En attente</span>
