@@ -1,21 +1,21 @@
-<div class="container">
+<div class="container" id="carrousel" style="height: 72vh;">
   <% @candidats.each do |c| %>
-    <%= link_to profile_path(c) do %>
-      <div class="card-product" style="margin-bottom: 5px;">
+    <%= link_to profile_path(c), class: 'el', style: 'width: 95%;height: 95%;' do %>
+      <div class="card-candidats">
         <% if c.photo.attached? %>
-            <%= cl_image_tag c.photo.key, height: 200, width: 300, crop: :fill, effect: "art:quartz", class: 'card-product-img' %>
+            <%= cl_image_tag c.photo.key, height: 250, crop: :scale, effect: "art:quartz", class: 'photo-candidats' %>
         <% else %>
-            <img src="https://source.unsplash.com/random?actor" class="card-product-img"/>
+            <img src="https://source.unsplash.com/random?actor" class="photo-candidats"/>
         <% end %>
-        <div class="card-product-infos" style="width: 100%;">
-          <div>
-            <h2><%= c.prenom %> <%= c.nom %></h2>
-            <p><%= c.infos %></p>
+        <div class="" style="width: 100%;">
+          <div class="head">
+            <strong><%= c.prenom %> <%= c.nom %></strong><br>
+            <small><%= c.infos %></small>
           </div>
-          <p class="card-trip-pricing" style="text-align: end;">
+          <div class="card-trip-pricing" style="text-align: end;">
             <span><%= c.adresse %></span>
             <i class="fa-solid fa-location-dot"></i>
-          </p>
+          </div>
         </div>
       </div>
     <% end %>

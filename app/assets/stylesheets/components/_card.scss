@@ -136,3 +136,18 @@
     padding: 4px;
   }
 }
+
+.card-candidats {
+  overflow: hidden;
+  height: 100%;
+  align-items: center;
+  background: linear-gradient(to top, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
+  border-radius: 16px;
+  box-shadow: 3px 4px 9px 0px #918888;
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  .photo-candidats {
+    width: 100%;
+  }
+}
