@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to posts_path, notice: "Post créé avec succès"
+      redirect_to archive_path, notice: "Post créé avec succès"
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,8 +34,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to archive_path, notice: "Post supprimé"
+    if @post.destroy
+      redirect_to archive_path, notice: "Post supprimé"
+    else
+      render :archive, status: :unprocessable_entity, notice: "Post non supprimé"
+    end
   end
 
   private

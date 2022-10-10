@@ -1,1 +1,106 @@
+<script>
+  if (window.location.pathname == '/archive') {
+    body.style = 'height: calc(100vh) !important; background: linear-gradient(to top, #ada996, #f2f2f2, #dbdbdb, #eaeaea);';
+  }
+
+  let scrollpos = window.scrollY
+  const header = document.querySelector("#body")
+  const header_height = header.offsetHeight
+
+  const add_class_on_scroll = () => header.classList.add("fade-in")
+  const remove_class_on_scroll = () => header.classList.remove("fade-in")
+
+  window.addEventListener('scroll', function() {
+    scrollpos = window.scrollY;
+
+    if (scrollpos <= header_height) { add_class_on_scroll() }
+    else { remove_class_on_scroll() }
+
+  })
+</script>
+
 <%= render 'shared/navbarrecruteur' %>
+
+<br><br><br>
+
+<div class="container" style="display: flex;justify-content: center;align-items: center;">
+  <div class="container" >
+    <% @posts.each do |p| %>
+        <div class="card-candidat" style="margin-bottom: 20px;">
+          <% if p.photos.attached? %>
+            <%= cl_image_tag p.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
+          <% else %>
+            <%= image_tag "https://source.unsplash.com/random?cinema", height: 150 , class: 'candidat-photo', crop: :fill %>
+          <% end %>
+          <div class="card-candidat-info">
+            <strong id="titre"><%= p.titre %></strong><br>
+            <span class="badge rounded-pill bg-info text-dark"><%= p.date.strftime("%d/%m/%y") %></span>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#add-post" style="border:1px solid white;background: #ffffff33;border-radius: 50%;">
+      <i class="fa-solid fa-plus" style="font-size: 50px; color: rgb(5, 252, 5)"></i>
+    </button>
+  </div>
+</div>
+<%= render 'shared/footer' %>
+
+<!-- Modal -->
+
+<div class="modal fade" id="add-post" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Nouveau Post : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 90%;">
+        <%= simple_form_for @post, data: { turbo_method: "post" } do |f| %>
+          <div class="form-inputs">
+            <%= f.input :titre,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Titre du post",
+                        input_html: { autocomplete: "titre" } %>
+            <%= f.input :date,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Date du post",
+                        input_html: { autocomplete: "date" } %>
+            <%= f.input :departement,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Département",
+                        input_html: { autocomplete: "departement" } %>
+            <%= f.input :descriptif,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Decriptif",
+                        input_html: { autocomplete: "descriptif"}%>
+            <%= f.input :photos,
+                        as: :file,
+                        required: false,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Photos",
+                        hint: "Selectionner une ou plusieurs photos",
+                        input_html: { multiple: true } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

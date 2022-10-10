@@ -2,7 +2,12 @@ class ArchivesController < ApplicationController
   def archive
     @user = current_user
     @bookings = Booking.where(post_id: @user.posts)
-    @posts = Post.where(user_id: @user)
+    @posts = Post.where(user_id: @user.id)
+    @post = Post.new
+  end
+
+  def new
+    @post = Post.new
   end
 
   def update

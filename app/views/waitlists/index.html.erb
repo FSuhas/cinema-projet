@@ -1,0 +1,63 @@
+<%= render 'shared/navbarrecruteur' %>
+<script>
+  if (window.location.pathname == '/candidatures') {
+    body.style = 'height: calc(100vh) !important; background: linear-gradient(to top, #ada996, #f2f2f2, #dbdbdb, #eaeaea);';
+  }
+
+  let scrollpos = window.scrollY
+  const header = document.querySelector("#body")
+  const header_height = header.offsetHeight
+
+  const add_class_on_scroll = () => header.classList.add("fade-in")
+  const remove_class_on_scroll = () => header.classList.remove("fade-in")
+
+  window.addEventListener('scroll', function() {
+    scrollpos = window.scrollY;
+
+    if (scrollpos <= header_height) { add_class_on_scroll() }
+    else { remove_class_on_scroll() }
+
+  })
+</script>
+
+
+<br><br><br>
+
+<div class="container" style="display: flex;justify-content: center;align-items: center;">
+  <div class="container" >
+    <% @bookings.each do |b| %>
+    <p>Pour <%= b.post.titre %></p>
+    <hr>
+      <%= link_to profile_path(b.user_id) do %>
+        <div class="card-candidat" style="margin-bottom: 20px;">
+          <% if b.user.photo.attached? %>
+            <%= cl_image_tag b.user.photo.key, height: 150 , class: 'candidat-photo', crop: :fill %>
+          <% else %>
+            <%= image_tag "https://images.unsplash.com/random?", height: 150 , class: 'candidat-photo', crop: :fill %>
+          <% end %>
+          <div class="card-candidat-info">
+            <strong id="titre"><%= b.user.prenom %></strong><br>
+              <% if b.confirmation === false %>
+                <div>
+                  <span class="badge bg-warning">En attente</span>
+
+                  <%= link_to post_booking_path(@posts, b), id: 'trash', data: {  turbo_method: "patch", turbo_confirm: "Accepter la candidature ?"} do %>
+                  <i class="fa-solid fa-stamp" style="font-size: 30px; color: rgb(5, 252, 5)"></i>
+                  <% end %>
+
+                  <%= link_to booking_path(b), id: 'valide', data: { turbo_method: :delete, turbo_confirm: "Refuser la candidature ?" } do %>
+                    <i class="fa-solid fa-trash" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+                  <% end %>
+                </div>
+                <% else b.confirmation === true %>
+                <div>
+                  <span class="badge bg-success">Accepté</span>
+                </div>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= render 'shared/footer' %>

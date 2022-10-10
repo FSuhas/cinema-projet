@@ -11,9 +11,16 @@ Rails.application.routes.draw do
   # route candidature
   resources :candidatures, only: %i[index], as: :candidatures
 
-  # route profile
+  # route profile candidat
   resources :profiles, except: %i[destroy new create]
   post '/profiles', to: 'profiles#update'
+
+  # route profile recruteur
+  resources :recruteurs, except: %i[destroy new create]
+
+  # route wait list
+
+  resources :waitlists, only: %i[index], as: :waitlists
 
   # route booking
   resources :bookings, only: [:destroy]
