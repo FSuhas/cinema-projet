@@ -5,68 +5,70 @@
 
 </script>
 
-<%= render 'shared/navbar' %>
+  <div class="container container-fluid">
+  <%= render 'shared/navbar' %>
 
-<div class="banner-post">
-  <% if @post.photos.attached? %>
-    <% @post.photos.each do |photo| %>
-      <%= link_to 'javascript:history.back()', style: "position: fixed;" do %>
-        <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+  <div class="banner-post">
+    <% if @post.photos.attached? %>
+      <% @post.photos.each do |photo| %>
+        <%= link_to 'javascript:history.back()', style: "position: fixed;" do %>
+          <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+        <% end %>
+        <%= cl_image_tag photo.key, class: "photo-post",
+                                    crop: :fill,
+                                    effect: "art:quartz" %>
       <% end %>
-      <%= cl_image_tag photo.key, class: "photo-post",
-                                  crop: :fill,
-                                  effect: "art:quartz" %>
+    <% else %>
+      <img src="https://source.unsplash.com/random?acteur" class="photo-post"/>
     <% end %>
-  <% else %>
-    <img src="https://source.unsplash.com/random?acteur" class="photo-post"/>
-  <% end %>
 
-</div>
-
-<div class="container">
-  <div class="tire" style="text-align: center; padding: 5px;">
-    <h3 style="margin-bottom: -11px;"><%= @post.titre %></h3>
-    <hr>
   </div>
 
-  <% if @post.user.prenom? || @post.user.nom? %>
-    <div style="text-align: center; padding: 5px;"><strong>A propos :</strong></div>
+  <div class="container">
+    <div class="tire" style="text-align: center; padding: 5px;">
+      <h3 style="margin-bottom: -11px;"><%= @post.titre %></h3>
+      <hr>
+    </div>
 
-    <div class="descriptif">
-      <small><%= @post.user.prenom %> <%= @post.user.nom %></small>
-      <small><%= @post.user.infos %></small>
+    <% if @post.user.prenom? || @post.user.nom? %>
+      <div style="text-align: center; padding: 5px;"><strong>A propos :</strong></div>
+
+      <div class="descriptif">
+        <small><%= @post.user.prenom %> <%= @post.user.nom %></small>
+        <small><%= @post.user.infos %></small>
+      </div>
+      <br>
+    <% end %>
+
+    <div style="text-align: center; padding: 5px;"><strong>Resumé :</strong></div>
+
+    <div class="resume">
+      <small>Je cherche un(e) : <%= @post.genre %> <br>
+      Dans le département : <%= @post.departement %> <br>
+      Pour le : <%= @post.date.strftime("%m/%d/%Y") %> </small>
     </div>
     <br>
+    <div style="text-align: center; padding: 5px;"><strong>Descriptif :</strong></div>
+
+    <div class="descriptif">
+      <p><%= @post.descriptif %></p>
+    </div>
+  </div>
+
+  <% if (@user.nom.nil? || @user.nom == '') || (@user.prenom.nil? || @user.prenom == '') || (@user.adresse.nil? || @user.adresse == '') || (@user.date_de_naissance.nil? || @user.date_de_naissance == '') %>
+    <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+      <%= link_to profiles_path, class: 'btn button' do %>
+        Personnaliser votre profil
+      <% end %>
+    </div>
+  <% else %>
+    <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+      <%= simple_form_for [@post, @booking] do |f| %>
+        <%= f.input :confirmation, label: false, style: 'd-none' %>
+        <%= f.button :submit, "Postulez", class: ' button' %>
+      <% end %>
+    </div>
   <% end %>
-
-  <div style="text-align: center; padding: 5px;"><strong>Resumé :</strong></div>
-
-  <div class="resume">
-    <small>Je cherche un(e) : <%= @post.genre %> <br>
-    Dans le département : <%= @post.departement %> <br>
-    Pour le : <%= @post.date.strftime("%m/%d/%Y") %> </small>
-  </div>
-  <br>
-  <div style="text-align: center; padding: 5px;"><strong>Descriptif :</strong></div>
-
-  <div class="descriptif">
-    <p><%= @post.descriptif %></p>
-  </div>
 </div>
-
-<% if (@user.nom.nil? || @user.nom == '') || (@user.prenom.nil? || @user.prenom == '') || (@user.adresse.nil? || @user.adresse == '') || (@user.date_de_naissance.nil? || @user.date_de_naissance == '') %>
-  <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
-    <%= link_to profiles_path, class: 'btn button' do %>
-      Personnaliser votre profil
-    <% end %>
-  </div>
-<% else %>
-  <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
-    <%= simple_form_for [@post, @booking] do |f| %>
-      <%= f.input :confirmation, label: false, style: 'd-none' %>
-      <%= f.button :submit, "Postulez", class: ' button' %>
-    <% end %>
-  </div>
-<% end %>
 
 <%= render 'shared/footer' %>
