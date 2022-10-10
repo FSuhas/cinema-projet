@@ -147,7 +147,31 @@
   backdrop-filter: blur(5.7px);
   -webkit-backdrop-filter: blur(5.7px);
   border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+
   .photo-candidats {
     width: 100%;
+  }
+  #name-strong {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    background: white;
+    border-radius: 15px;
+    padding: 4px;
+  }
+  #localisation{
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    background: white;
+    border-radius: 15px;
+    padding: 4px;
+  }
+
+  .footer-card {
+    position: absolute;
+    bottom: 0;
   }
 }

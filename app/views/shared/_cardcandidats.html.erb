@@ -1,21 +1,20 @@
-<div class="container" id="carrousel" style="height: 72vh;">
+<div class="container" id="carrousel" style="position: fixed;height: 72vh;">
   <% @candidats.each do |c| %>
-    <%= link_to profile_path(c), class: 'el', style: 'width: 95%;height: 95%;' do %>
+    <%= link_to profile_path(c), class: 'el', style: 'width: 102%;height: 100%;' do %>
       <div class="card-candidats">
         <% if c.photo.attached? %>
-            <%= cl_image_tag c.photo.key, height: 250, crop: :scale, effect: "art:quartz", class: 'photo-candidats' %>
+            <%= cl_image_tag c.photo.key, height: 400, crop: :fill, effect: "art:quartz", class: 'photo-candidats', style: 'position: absolute;z-index: -1;' %>
         <% else %>
             <img src="https://source.unsplash.com/random?actor" class="photo-candidats"/>
         <% end %>
-        <div class="" style="width: 100%;">
-          <div class="head">
-            <strong><%= c.prenom %> <%= c.nom %></strong><br>
-            <small><%= c.infos %></small>
-          </div>
-          <div class="card-trip-pricing" style="text-align: end;">
-            <span><%= c.adresse %></span>
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
+        <strong id="name-strong"><%= c.prenom %> <%= c.nom %></strong>
+        <p id="localisation"> <%= c.adresse %> <i  class="fa-solid fa-location-dot"></i></p>
+        <div class="container footer-card">
+          <% if c.infos? %>
+            <p style="text-align: center;"><%= c.infos.truncate(70) %></p>
+          <% else %>
+            <p style="text-align: center;">Aucun informations disponible</p>
+          <% end %>
         </div>
       </div>
     <% end %>
