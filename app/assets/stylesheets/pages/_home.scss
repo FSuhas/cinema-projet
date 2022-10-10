@@ -23,7 +23,29 @@ border {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: black;
-  -webkit-clip-path: polygon(100% 0, 100% 2%, 0% 100%, 0% 98%);
-  clip-path: polygon(100% 0, 100% 2%, 0% 100%, 0% 98%);
+  background-color: rgb(10, 34, 139);
+  -webkit-clip-path: polygon(100% 0, 100% 1%, 0% 100%, 0% 99%);
+  clip-path: polygon(100% 0, 100% 1%, 0% 100%, 0% 99%);
+}
+
+#candi {
+  position: absolute;
+  bottom: 25%;
+  right: 15%;
+  background: #ffffff39;
+  border: 1px solid rgb(10, 34, 139);
+  color: rgb(10, 34, 139);
+  border-radius: 15px;
+  padding: 8px;
+}
+
+#recru {
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  background: #ffffff39;
+  border: 1px solid rgb(10, 34, 139);
+  color: rgb(10, 34, 139);
+  border-radius: 15px;
+  padding: 8px;
 }

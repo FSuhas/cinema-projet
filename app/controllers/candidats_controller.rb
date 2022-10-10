@@ -14,9 +14,7 @@ class CandidatsController < ApplicationController
   private
 
   def set_role
-    if current_user.role == ""
-      current_user.role = "recruteur"
-      current_user.save
-    end
+    current_user.role = "recruteur"
+    current_user.save
   end
 end
