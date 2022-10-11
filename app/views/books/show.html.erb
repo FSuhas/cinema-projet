@@ -1,4 +1,23 @@
-<div class="main">
+<script>
+  if (window.location.pathname == '/books/:id') {
+    document.querySelector("#body").style = 'height: calc(100vh); background: linear-gradient(to top, #ada996, #f2f2f2, #dbdbdb, #eaeaea);';
+  }
+
+  let scrollpos = window.scrollY
+  const header = document.querySelector("#body")
+  const header_height = header.offsetHeight
+
+  const add_class_on_scroll = () => header.classList.add("fade-in")
+  const remove_class_on_scroll = () => header.classList.remove("fade-in")
+
+  window.addEventListener('scroll', function() {
+    scrollpos = window.scrollY;
+
+    if (scrollpos <= header_height) { add_class_on_scroll() }
+    else { remove_class_on_scroll() }
+
+  })
+</script>
   <div class="container" style="display: flex;justify-content: center;align-items: center;">
     <h1><%= @book.titre.capitalize %></h1>
     <br><br><br><br><br>
@@ -13,4 +32,3 @@
         <% end %>
       <br><br><br>
   </div>
-</div>
