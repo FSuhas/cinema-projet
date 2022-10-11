@@ -5,9 +5,9 @@
 
 </script>
 
-  <div class="container container-fluid">
-  <%= render 'shared/navbar' %>
+<%= render 'shared/navbar' %>
 
+<div class="container container-fluid">
   <div class="banner-post">
     <% if @post.photos.attached? %>
       <% @post.photos.each do |photo| %>
