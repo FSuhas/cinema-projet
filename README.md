@@ -26,4 +26,4 @@ Compte recruteur :
 ## License
 
 - Copyright © 2022 [@hissen](https://www.github.com/fsuhas)
-- This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
+- This project is [MIT](https://github.com/FSuhas/cinema-projet/blob/master/LICENSE) licensed.
