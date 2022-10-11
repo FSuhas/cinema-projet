@@ -22,3 +22,8 @@ Compte recruteur :
 
 - [@Léopold](https://www.facebook.com/groups/628150358397587/) à l'initiative du projet
 - [@hissen](https://www.github.com/fsuhas) developpeur full-stack RoR (Ruby on Rails)
+
+## License
+
+- Copyright © 2022 [@hissen](https://www.github.com/fsuhas)
+- This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
