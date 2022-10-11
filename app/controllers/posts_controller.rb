@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[show]
-  before_action :set_role, only: %i[index]
+  before_action :set_role, only: %i[index show]
 
   def index
     @user = current_user

@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :show,]
+  before_action :set_role, only: %i[index]
+  before_action :set_profil, only: [:show]
 
   def index
     @user = current_user
@@ -25,6 +27,19 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  def set_profil
+    if current_user.role == "candidat"
+      redirect_to posts_path
+    end
+
+  end
+
+  def set_role
+    if current_user.role == "recruteur"
+      redirect_to recruteurs_path
+    end
+  end
 
   def set_profile
     @user = User.find(params[:id])

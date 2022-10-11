@@ -1,4 +1,5 @@
 class ArchivesController < ApplicationController
+  before_action :set_role, only: %i[archive]
   def archive
     @user = current_user
     @bookings = Booking.where(post_id: @user.posts)
@@ -20,6 +21,13 @@ class ArchivesController < ApplicationController
   end
 
   private
+
+  def set_role
+    if current_user.role == "candidat"
+      redirect_to posts_path
+    end
+
+  end
 
   def user_params
     params.require(:booking).permit(:titre, :role, :age, :genre,

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_role, only: %i[index]
 
 
   def index
@@ -40,6 +41,12 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def set_role
+    if current_user.role == "recruteur"
+      redirect_to candidats_path
+    end
+  end
 
   def book_params
     params.require(:book).permit(:id, :titre, :user_id, photos: [])
