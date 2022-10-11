@@ -2,7 +2,6 @@
 
 Cette application a pour but de faciliter le contact entre intermittent du spectacle dans le monde du cinéma (figurant, doublure, silhouette, silhouette parlante, rôle) et les chargées de recrutement.
 
-
 ## Démo
 
 https://cinema-projet.herokuapp.com/
@@ -10,13 +9,14 @@ https://cinema-projet.herokuapp.com/
 Compte candidat :
 - email : fabien@test.com
 - mdp : azerty
+
 Compte recruteur :
 - email : jessica@test.com
 - mdp : azerty
+
 ## Screenshots
 
 ![App Screenshot](https://www.zupimages.net/up/22/41/4cbi.png)
-
 
 ## Autheurs
 
