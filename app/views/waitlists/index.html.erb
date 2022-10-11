@@ -31,9 +31,9 @@
       <%= link_to profile_path(b.user_id) do %>
         <div class="card-candidat" style="margin-bottom: 20px;">
           <% if b.user.photo.attached? %>
-            <%= cl_image_tag b.user.photo.key, height: 150 , class: 'candidat-photo', crop: :fill %>
+            <%= cl_image_tag b.user.photo.key, width: 500 , height:150, class: 'candidat-photo', crop: :scale %>
           <% else %>
-            <%= image_tag "https://images.unsplash.com/random?", height: 150 , class: 'candidat-photo', crop: :fill %>
+            <%= image_tag "https://images.unsplash.com/random?", width: 500 , height:150, class: 'candidat-photo' %>
           <% end %>
           <div class="card-candidat-info">
             <strong id="titre"><%= b.user.prenom %></strong><br>

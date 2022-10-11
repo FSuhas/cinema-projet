@@ -18,7 +18,6 @@
 
   })
 </script>
-<div class="main">
   <% if user_signed_in? %>
     <% if current_user.role == 'candidat' %>
       <%= link_to "/posts" do %>
@@ -41,5 +40,4 @@
       <strong id="recru">Je suis recruteur</strong>
     <% end %>
   <% end %>
-</div>
 <border>
