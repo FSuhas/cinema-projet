@@ -48,8 +48,12 @@ class PostsController < ApplicationController
   end
 
   def set_role
-    current_user.role = "candidat"
-    current_user.save
+    if current_user.role == "recruteur"
+      redirect_to candidats_path
+    else
+      current_user.role = "candidat"
+      current_user.save
+    end
   end
 
   def post_params
