@@ -29,11 +29,15 @@
     <p>Pour <%= b.post.titre %></p>
     <hr>
       <%= link_to profile_path(b.user_id) do %>
-        <div class="card-candidat" style="margin-bottom: 20px;">
+        <div class="card-candidat" style="margin-bottom: 20px;display:flex;justify-content:center;">
           <% if b.user.photo.attached? %>
-            <%= cl_image_tag b.user.photo.key, width: 500 , height:150, class: 'candidat-photo', crop: :scale %>
+            <%= cl_image_tag b.user.photo.key, width: 500 , height:150, class: 'candidat-photo',  crop: :thumb, gravity: :face %>
           <% else %>
-            <%= image_tag "https://images.unsplash.com/random?", width: 500 , height:150, class: 'candidat-photo' %>
+            <% if b.user.sexe == 'Homme' %>
+              <img src="https://img.icons8.com/officel/344/circled-user-male-skin-type-6.png" class="candidat-photo" />
+            <% else %>
+            <img src="https://img.icons8.com/officel/344/circled-user-female-skin-type-6.png" class="candidat-photo" />
+            <% end %>
           <% end %>
           <div class="card-candidat-info">
             <strong id="titre"><%= b.user.prenom %></strong><br>
