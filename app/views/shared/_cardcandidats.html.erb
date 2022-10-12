@@ -5,7 +5,11 @@
         <% if c.photo.attached? %>
             <%= cl_image_tag c.photo.key, height: 400, crop: :fill, effect: "art:quartz", class: 'photo-candidats', style: 'padding: 18px;position: absolute;z-index: -1;' %>
         <% else %>
-            <img src="https://source.unsplash.com/random?actor" class="photo-candidats" , style="height:400px;padding: 18px;position: absolute;z-index: -1;" />
+          <% if c.sexe == 'Homme' %>
+            <img src="https://img.icons8.com/officel/344/circled-user-male-skin-type-6.png" class="photo-candidats" , style="height:400px;padding: 18px;position: absolute;z-index: -1;" />
+          <% else %>
+          <img src="https://img.icons8.com/officel/344/circled-user-female-skin-type-6.png" class="photo-candidats" , style="height:400px;padding: 18px;position: absolute;z-index: -1;" />
+          <% end %>
         <% end %>
         <strong id="name-strong"><%= c.prenom %> <%= c.nom %></strong>
         <p id="localisation"> <%= c.departement %> <i  class="fa-solid fa-location-dot"></i></p>
