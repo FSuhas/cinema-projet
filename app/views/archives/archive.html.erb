@@ -39,7 +39,7 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade active show" id="future" role="tabpanel"  aria-labelledby="future-tab" >
 
-    <div class="container" style="display: flex;justify-content: center;align-items: center;">
+    <div class="container" style="height: 68vh;display: flex;justify-content: center;align-items: center;">
       <div class="container" >
         <% @posts.each do |p| %>
           <% if p.date > Date.today %>
@@ -130,7 +130,8 @@
   </div>
 
   <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
-    <div class="container" style="display: flex;justify-content: center;align-items: center;">
+
+    <div class="container" style="height: 68vh;display: flex;justify-content: center;align-items: center;">
       <div class="container" >
         <% @posts.each do |p| %>
           <% if p.date < Date.today %>

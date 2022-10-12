@@ -131,7 +131,7 @@
     }
   }
   #titre {
-    background: #ffffffb0;
+    background: #9aa1d6b0;
     border-radius: 15px;
     padding: 4px;
   }
@@ -157,7 +157,7 @@
     position: fixed;
     top: 5px;
     left: 5px;
-    background: #ffffffb0;
+    background: #9aa1d6b0;
     border-radius: 15px;
     padding: 4px;
   }
@@ -165,13 +165,16 @@
     position: fixed;
     top: 5px;
     right: 5px;
-    background: #ffffffb0;
+    background: #9aa1d6b0;
     border-radius: 15px;
     padding: 4px;
   }
 
   .footer-card {
     position: absolute;
-    bottom: 0;
+    bottom: 4%;
+    background: #857f7fb0;
+    border: 1px solid white;
+    width: 92%;
   }
 }
