@@ -9,11 +9,11 @@
 
 <div class="container container-fluid">
   <div class="banner-post">
+    <%= link_to 'javascript:history.back()', style: "position: fixed;" do %>
+      <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+    <% end %>
     <% if @post.photos.attached? %>
       <% @post.photos.each do |photo| %>
-        <%= link_to 'javascript:history.back()', style: "position: fixed;" do %>
-          <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
-        <% end %>
         <%= cl_image_tag photo.key, class: "photo-post",
                                     crop: :fill,
                                     effect: "art:quartz" %>
@@ -54,6 +54,7 @@
       <p><%= @post.descriptif %></p>
     </div>
   </div>
+</div>
 
   <% if (@user.nom.nil? || @user.nom == '') || (@user.prenom.nil? || @user.prenom == '') || (@user.adresse.nil? || @user.adresse == '') || (@user.date_de_naissance.nil? || @user.date_de_naissance == '') %>
     <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
@@ -69,6 +70,6 @@
       <% end %>
     </div>
   <% end %>
-</div>
+
 
 <%= render 'shared/footer' %>
