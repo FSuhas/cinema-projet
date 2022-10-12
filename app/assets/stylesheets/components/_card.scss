@@ -113,13 +113,13 @@
 
 .card-candidat-info {
   position: absolute;
-  z-index: 1000;
-  top: 10px;
+  top: 5px;
   left: 10px;
   display: flex;
   height: -webkit-fill-available;
   flex-direction: column;
   justify-content: space-between;
+  bottom: 5px;
 
   #trash {
     .fa-solid {

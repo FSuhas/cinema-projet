@@ -7,10 +7,13 @@ class PostsController < ApplicationController
     @user = current_user
     if params[:query].present?
       @posts = Post.search_by_query(params[:query]).order(date: :asc)
+      @posts = @posts.where("date >= ?", Time.now)
     else
       @posts = Post.all.order(date: :asc)
+      @posts = @posts.where("date >= ?", Time.now)
     end
   end
+
 
   def show
     @user = current_user
@@ -28,7 +31,17 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to archive_path, notice: "Post créé avec succès"
     else
-      render :new, status: :unprocessable_entity
+      redirect_to archive_path, alert: "Erreur", status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @user = current_user
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to archive_path, notice: "Votre post a bien été mis à jour"
+    else
+      redirect_to archive_path, notice: 'msg erreur', status: :unprocessable_entity
     end
   end
 

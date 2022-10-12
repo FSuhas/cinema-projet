@@ -31,9 +31,9 @@
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Trouver un Job", '/posts', class: "dropdown-item" %>
                 <%= link_to "Mon Profil", "/profiles", class: "dropdown-item" %>
-                <%= link_to "Mes Books", "/books", class: "dropdown-item" %>
                 <%= link_to "Mes Candidatures", "/candidatures", class: "dropdown-item" %>
-                <!-- <%= link_to "Mes Mensurations", "/mensurations", class: "dropdown-item" %> -->
+                <%= link_to "Mes Books", "/books", class: "dropdown-item" %>
+                <%= link_to "Mes Mensurations", "/mensurations", class: "dropdown-item" %>
                 <%= link_to "Se Déconnecter" , destroy_user_session_path , class: "dropdown-item", data: {turbo_method: :delete} %>
               </div>
             </li>

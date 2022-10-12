@@ -6,12 +6,10 @@
 
 <%= render 'shared/navbar' %>
 
-<div class="container" style="display: flex;justify-content: center;align-items: center;">
+<div class="container" style="display: flex;justify-content: center;align-items: center; height:80vh;">
   <% if @user.sexe == 'Homme' %>
-    <img src="" alt="">
-    <p>Homme</p>
+    <%= image_tag 'man.png', style: 'height:95%;' %>
   <% else %>
-    <img src="" alt="">
-    <p>Femme</p>
+  <%= image_tag 'womanH.png', style: 'height:95%;' %>
   <% end %>
 </div>
