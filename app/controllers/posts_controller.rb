@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to archive_path, notice: "Post créé avec succès"
     else
-      redirect_to archive_path, alert: "Erreur", status: :unprocessable_entity
+      redirect_to archive_path, alert: "Veuillez remplir tous les champs obligatoir", status: :unprocessable_entity
     end
   end
 
