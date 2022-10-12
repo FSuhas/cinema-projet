@@ -46,6 +46,6 @@ class ProfilesController < ApplicationController
   end
 
   def params_create
-    params.require('/profiles').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
+    params.require('/profiles').permit(:id, :email, :nom, :prenom, :departement, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
   end
 end

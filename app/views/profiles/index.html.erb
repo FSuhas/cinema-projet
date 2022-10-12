@@ -19,14 +19,20 @@
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Adresse : <strong id="strong-blue"><%= @user.adresse %></strong></p>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#adresse" style="border: none;font-size:15px;background: none;">
+      <p>Département : <strong id="strong-blue"><%= @user.departement %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#departement" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
       <p>Date de naissance : <strong id="strong-blue"> <% if @user.date_de_naissance? %> <%= @user.date_de_naissance.strftime("%d/%m/%Y") %>  <% end %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#date" style="border: none;font-size:15px;background: none;">
+        <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
+      </button>
+    </div>
+    <div style="display: flex;justify-content: space-between;align-items: flex-start;">
+      <p>Sexe : <strong id="strong-blue"> <% if @user.sexe? %> <%= @user.sexe %>  <% end %></strong></p>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#sexe" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
     </div>
@@ -140,25 +146,25 @@
   </div>
 </div>
 
-<!-- Adresse -->
+<!-- departement -->
 
-<div class="modal fade" id="adresse" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+<div class="modal fade" id="departement" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" style="border-radius: 20px;">
       <div class="container" style="display: flex;justify-content: center;align-items: center;">
-        <h2>Votre adresse : </h2>
+        <h2>Votre département : </h2>
         <br><br><br><br><br><br>
       </div>
 
       <div class="container" style="width: 60%;">
         <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
-            <%= f.input :adresse,
+            <%= f.input :departement,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: @user.adresse,
-                        input_html: { autocomplete: "adresse" } %>
+                        placeholder: @user.departement,
+                        input_html: { autocomplete: "departement" } %>
           </div>
           <br><br>
           <div class="form-actions" style="display: flex;justify-content:center;">
@@ -192,6 +198,38 @@
                         autofocus: true,
                         label: false,
                         input_html: { autocomplete: "date de naissance" } %>
+          </div>
+          <br><br>
+          <div class="form-actions" style="display: flex;justify-content:center;">
+            <%= f.button :submit, "Valider", class: 'btn button' %>
+          </div>
+          <br><br>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sexe -->
+
+<div class="modal fade" id="sexe" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="container" style="display: flex;justify-content: center;align-items: center;">
+        <h2>Vous êtes un(e)? : </h2>
+        <br><br><br><br><br><br>
+      </div>
+
+      <div class="container" style="width: 60%;">
+        <%= simple_form_for(profiles_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :sexe,
+                        collection: ["Homme", "Femme"],
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        input_html: { autocomplete: "sexe" } %>
           </div>
           <br><br>
           <div class="form-actions" style="display: flex;justify-content:center;">
@@ -275,7 +313,7 @@
   <div class="modal-dialog">
     <div class="modal-content" style="border-radius: 20px;">
       <div class="container" style="display: flex;justify-content: center;align-items: center;">
-        <h2>Votre adresse Email : </h2>
+        <h2>Votre Email : </h2>
         <br><br><br><br><br><br>
       </div>
 

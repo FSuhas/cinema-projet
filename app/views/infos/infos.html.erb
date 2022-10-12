@@ -27,7 +27,7 @@
       <button type="button" data-bs-toggle="modal" data-bs-target="#infos">
     <div class="infos-perso" >
       <p><i class="fa-solid fa-cake-candles"></i> : <%= @user.date_de_naissance %></p>
-      <p><i class="fa-solid fa-location-dot"></i> : <%= @user.adresse %></p>
+      <p><i class="fa-solid fa-location-dot"></i> : <%= @user.departement %></p>
       <p><i class="fa-solid fa-mobile-screen"></i> : <%= @user.telephone %></p>
       <p><i class="fa-solid fa-at"></i> : <%= @user.email %></p>
         <i class="fa-solid fa-pen-to-square"></i>
@@ -121,10 +121,10 @@
                         collection: ["Homme", "Femme", "Autre"],
                         required: true,
                         label: "Genre" %>
-            <%= f.input :adresse,
+            <%= f.input :departement,
                         required: true,
-                        label: 'Adresse',
-                        placeholder: @user.adresse %>
+                        label: 'Département ex: 75' %>',
+                        placeholder: @user.departement %>
             <%= f.input :telephone,
                         label: 'Téléphone',
                         required: true,

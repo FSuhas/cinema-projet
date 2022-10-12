@@ -56,7 +56,7 @@
   </div>
 </div>
 
-  <% if (@user.nom.nil? || @user.nom == '') || (@user.prenom.nil? || @user.prenom == '') || (@user.adresse.nil? || @user.adresse == '') || (@user.date_de_naissance.nil? || @user.date_de_naissance == '') %>
+  <% if (@user.nom.nil? || @user.nom == '') || (@user.prenom.nil? || @user.prenom == '') || (@user.departement.nil? || @user.departement == '') || (@user.date_de_naissance.nil? || @user.date_de_naissance == '') %>
     <div class="container" style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
       <%= link_to profiles_path, class: 'btn button' do %>
         Personnaliser votre profil

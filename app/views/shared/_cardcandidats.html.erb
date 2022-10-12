@@ -8,7 +8,7 @@
             <img src="https://source.unsplash.com/random?actor" class="photo-candidats"/>
         <% end %>
         <strong id="name-strong"><%= c.prenom %> <%= c.nom %></strong>
-        <p id="localisation"> <%= c.adresse %> <i  class="fa-solid fa-location-dot"></i></p>
+        <p id="localisation"> <%= c.departement %> <i  class="fa-solid fa-location-dot"></i></p>
         <div class="container footer-card">
           <% if c.infos? %>
             <p style="text-align: center;"><%= c.infos.truncate(70) %></p>

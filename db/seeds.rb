@@ -21,7 +21,7 @@ puts "#destroy_all finish !"
 sleep(1)
 puts "User seed start..."
 
-fabien = User.new(email: 'fabien@test.com', password: 'azerty', nom: 'Suhas', prenom: 'Fabien', adresse: '77',
+fabien = User.new(email: 'fabien@test.com', password: 'azerty', nom: 'Suhas', prenom: 'Fabien', departement: '77',
   telephone: '06.23.16.20.02', sexe: :Homme, date_de_naissance: '1986.08.13', infos: 'Blond grand aux yeux bleus',
   role: 'candidat'
 )
@@ -30,14 +30,14 @@ fabien.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man
 
 fabien.save!
 
-jean = User.new(email: 'jean@test.com', password: 'azerty', nom: 'Jean', prenom: 'Test',  adresse: '',
+jean = User.new(email: 'jean@test.com', password: 'azerty', nom: 'Jean', prenom: 'Test',  departement: '',
   telephone: '', sexe: '', date_de_naissance: '', infos: '',
   role: 'recruteur'
 )
 
 jean.save!
 
-jessica = User.new(email: 'jessica@test.com', password: 'azerty', nom: 'Bolle', prenom: 'Jessica', adresse: '',
+jessica = User.new(email: 'jessica@test.com', password: 'azerty', nom: 'Bolle', prenom: 'Jessica', departement: '',
   telephone: '', sexe: '', date_de_naissance: '', infos: '',
   role: 'recruteur'
 )
@@ -45,7 +45,7 @@ jessica = User.new(email: 'jessica@test.com', password: 'azerty', nom: 'Bolle', 
 
 jessica.save!
 
-axel = User.new(email: 'ngagecast@gmail.com', password: 'azerty', nom: 'Laufer', prenom: 'Axel', adresse: '75',
+axel = User.new(email: 'ngagecast@gmail.com', password: 'azerty', nom: 'Laufer', prenom: 'Axel', departement: '75',
   telephone: '', sexe: '', date_de_naissance: '', infos: 'Chargée de recrutement',
   role: 'recruteur'
 )
@@ -54,7 +54,7 @@ axel.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man")
 
 axel.save!
 
-franck = User.new(email: 'jouardcasting@icloud.com', password: 'azerty', nom: 'Jouard', prenom: 'Franck', adresse: '78',
+franck = User.new(email: 'jouardcasting@icloud.com', password: 'azerty', nom: 'Jouard', prenom: 'Franck', departement: '78',
   telephone: '', sexe: '', date_de_naissance: '', infos: 'Chargée de recrutement',
   role: 'recruteur'
 )
@@ -63,7 +63,7 @@ franck.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?boy
 
 franck.save!
 
-lael = User.new(email: 'lael@test.com', password: 'azerty', nom: 'Bolle Suhas', prenom: 'Laël', adresse: '77',
+lael = User.new(email: 'lael@test.com', password: 'azerty', nom: 'Bolle Suhas', prenom: 'Laël', departement: '77',
   telephone: '06.23.16.20.02', sexe: :Homme,  date_de_naissance: '2016-01-18', infos: 'Jeune garçon blond aux yeux bleus',
   role: 'candidat'
 )
@@ -72,7 +72,7 @@ lael.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?"), f
 
 lael.save!
 
-noevan = User.new(email: 'noevan@test.com',  password: 'azerty', nom: 'Bolle Suhas', prenom: 'Noëvan', adresse: '77',
+noevan = User.new(email: 'noevan@test.com',  password: 'azerty', nom: 'Bolle Suhas', prenom: 'Noëvan', departement: '77',
   telephone: '06.23.16.20.02',  sexe: :Homme, date_de_naissance: '2020-10-04', infos: 'Jeune garçon blond aux yeux bleus',
   role: 'candidat'
 )

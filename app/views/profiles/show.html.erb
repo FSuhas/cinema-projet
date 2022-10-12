@@ -16,7 +16,7 @@
   <div class="container" style="display: flex;flex-direction: column;align-items: center;">
     <br>
     <h2><%= @profile.prenom %> <%= @profile.nom %></h2>
-    <small style="font-size: 12px;"><i class="fa-solid fa-cake-candles"></i> <%= @profile.date_de_naissance.strftime("%m/%d/%Y") %> - <%= @profile.adresse %> <i class="fa-solid fa-location-dot"></i></small>
+    <small style="font-size: 12px;"><i class="fa-solid fa-cake-candles"></i> <%= @profile.date_de_naissance.strftime("%m/%d/%Y") %> - <%= @profile.departement %> <i class="fa-solid fa-location-dot"></i></small>
     <br>
     <% if @profile.infos? %>
       <p style="text-align:center;"><%= @profile.infos %></p>

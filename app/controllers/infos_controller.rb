@@ -26,6 +26,6 @@ class InfosController < ApplicationController
   end
 
   def params_create
-    params.require('/infos').permit(:id, :email, :nom, :prenom, :adresse, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
+    params.require('/infos').permit(:id, :email, :nom, :prenom, :departement, :telephone, :date_de_naissance, :sexe, :infos, :role, :avatar, :photo)
   end
 end
