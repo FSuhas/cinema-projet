@@ -21,93 +21,144 @@
 
 <%= render 'shared/navbarrecruteur' %>
 
-<br><br><br>
+<br>
 
-<div class="container" style="display: flex;justify-content: center;align-items: center;">
-  <div class="container" >
-    <% @posts.each do |p| %>
-      <div class="card-candidat" style="margin-bottom: 20px;">
-        <% if p.photos.attached? %>
-          <%= cl_image_tag p.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
-        <% else %>
-          <%= image_tag "https://source.unsplash.com/random?cinema", height: 150 , class: 'candidat-photo', crop: :fill %>
-        <% end %>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#edit" style="border:none;background:none;position: absolute;right: 0;bottom:0;">
-          <i class="fa-solid fa-file-pen" style="color: rgb(255, 246, 70);font-size:20px;"></i>
-        </button>
-        <div class="card-candidat-info">
-
-          <strong id="titre"><%= p.titre.capitalize %></strong><br>
-          <span class="badge rounded-pill bg-info text-dark"><%= p.date.strftime("%d/%m/%y") %></span>
-        </div>
-      </div>
-
-          <!-- Modal in each @posts -->
-
-      <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content" style="border-radius: 20px;">
-            <div class="container" style="display: flex;justify-content: center;align-items: center;">
-              <h2>Edit Post : </h2>
-              <br><br><br><br><br><br>
-            </div>
-
-            <div class="container" style="width: 90%;">
-              <%= simple_form_for p, data: { turbo_method: "patch" } do |f| %>
-                <div class="form-inputs">
-                  <%= f.input :titre,
-                              required: true,
-                              autofocus: true,
-                              label: false,
-                              placeholder: "Titre du post",
-                              input_html: { autocomplete: "titre" } %>
-                  <%= f.input :date,
-                              as: :date,
-                              html5: true,
-                              required: true,
-                              autofocus: true,
-                              label: false,
-                              placeholder: "Date du post",
-                              input_html: { autocomplete: "date" } %>
-                  <%= f.input :departement,
-                              required: true,
-                              autofocus: true,
-                              label: false,
-                              placeholder: "Département",
-                              input_html: { autocomplete: "departement" } %>
-                  <%= f.input :descriptif,
-                              required: true,
-                              autofocus: true,
-                              label: false,
-                              placeholder: "Decriptif",
-                              input_html: { autocomplete: "descriptif"}%>
-                  <%= f.input :photos,
-                              as: :file,
-                              required: false,
-                              autofocus: true,
-                              label: false,
-                              placeholder: "Photos",
-                              hint: "Selectionner une ou plusieurs photos",
-                              input_html: { multiple: true } %>
-                </div>
-                <br><br>
-                <div class="form-actions" style="display: flex;justify-content:center;">
-                  <%= f.button :submit, "Valider", class: 'btn button' %>
-                </div>
-                <br><br>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#add-post" style="border:1px solid white;background: #ffffff33;border-radius: 50%;">
-      <i class="fa-solid fa-plus" style="font-size: 50px; color: rgb(5, 252, 5)"></i>
+<div class="container" style="display: inline;">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="true">
+      Evenements à venir
     </button>
-  </div>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">
+        Evenements passés
+      </button>
+    </li>
+  </ul>
+  <hr>
 </div>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade active show" id="future" role="tabpanel"  aria-labelledby="future-tab" >
+
+    <div class="container" style="display: flex;justify-content: center;align-items: center;">
+      <div class="container" >
+        <% @posts.each do |p| %>
+          <% if p.date > Date.today %>
+            <div class="card-candidat" style="margin-bottom: 20px;">
+              <% if p.photos.attached? %>
+                <%= cl_image_tag p.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
+              <% else %>
+                <%= image_tag "https://source.unsplash.com/random?cinema", height: 150 , class: 'candidat-photo', crop: :fill %>
+              <% end %>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#edit" style="border:none;background:none;position: absolute;right: 0;bottom:0;">
+                <i class="fa-solid fa-file-pen" style="color: rgb(255, 246, 70);font-size:20px;"></i>
+              </button>
+              <div class="card-candidat-info">
+
+                <strong id="titre"><%= p.titre.capitalize %></strong><br>
+                <span class="badge rounded-pill bg-info text-dark"><%= p.date.strftime("%d/%m/%y") %></span>
+              </div>
+            </div>
+
+                <!-- Modal in each @posts -->
+
+            <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content" style="border-radius: 20px;">
+                  <div class="container" style="display: flex;justify-content: center;align-items: center;">
+                    <h2>Edit Post : </h2>
+                    <br><br><br><br><br><br>
+                  </div>
+
+                  <div class="container" style="width: 90%;">
+                    <%= simple_form_for p, data: { turbo_method: "patch" } do |f| %>
+                      <div class="form-inputs">
+                        <%= f.input :titre,
+                                    required: true,
+                                    autofocus: true,
+                                    label: false,
+                                    placeholder: "Titre du post",
+                                    input_html: { autocomplete: "titre" } %>
+                        <%= f.input :date,
+                                    as: :date,
+                                    html5: true,
+                                    required: true,
+                                    autofocus: true,
+                                    label: false,
+                                    placeholder: "Date du post",
+                                    input_html: { autocomplete: "date" } %>
+                        <%= f.input :departement,
+                                    required: true,
+                                    autofocus: true,
+                                    label: false,
+                                    placeholder: "Département",
+                                    input_html: { autocomplete: "departement" } %>
+                        <%= f.input :descriptif,
+                                    required: true,
+                                    autofocus: true,
+                                    label: false,
+                                    placeholder: "Decriptif",
+                                    input_html: { autocomplete: "descriptif"}%>
+                        <%= f.input :photos,
+                                    as: :file,
+                                    required: false,
+                                    autofocus: true,
+                                    label: false,
+                                    placeholder: "Photos",
+                                    hint: "Selectionner une ou plusieurs photos",
+                                    input_html: { multiple: true } %>
+                      </div>
+                      <br><br>
+                      <div class="form-actions" style="display: flex;justify-content:center;">
+                        <%= f.button :submit, "Valider", class: 'btn button' %>
+                      </div>
+                      <br><br>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <%= render 'shared/footer' %>
+      </div>
+      <div style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#add-post" style="border:1px solid white;background: #ffffff33;border-radius: 50%;">
+          <i class="fa-solid fa-plus" style="font-size: 50px; color: rgb(5, 252, 5)"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+    <div class="container" style="display: flex;justify-content: center;align-items: center;">
+      <div class="container" >
+        <% @posts.each do |p| %>
+          <% if p.date < Date.today %>
+            <div class="card-candidat" style="margin-bottom: 20px;">
+              <% if p.photos.attached? %>
+                <%= cl_image_tag p.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
+              <% else %>
+                <%= image_tag "https://source.unsplash.com/random?cinema", height: 150 , class: 'candidat-photo', crop: :fill %>
+              <% end %>
+              <div class="card-candidat-info">
+
+                <strong id="titre"><%= p.titre.capitalize %></strong><br>
+                <span class="badge rounded-pill bg-info text-dark"><%= p.date.strftime("%d/%m/%y") %></span>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <%= render 'shared/footer' %>
+      </div>
+      <div style="display: flex;justify-content: center;position: fixed; bottom: 2rem;">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#add-post" style="border:1px solid white;background: #ffffff33;border-radius: 50%;">
+          <i class="fa-solid fa-plus" style="font-size: 50px; color: rgb(5, 252, 5)"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
 <!-- Modal @post = Post.new -->
 

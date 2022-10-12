@@ -11,8 +11,6 @@ class ArchivesController < ApplicationController
     @post = Post.new
   end
 
-
-
   private
 
   def set_role
