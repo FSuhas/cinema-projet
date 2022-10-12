@@ -30,10 +30,10 @@
             <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Trouver un Artiste", '/candidats', class: "dropdown-item" %>
-                <%= link_to "Mon Profil", '/recruteurs', class: "dropdown-item" %>
+                <%= link_to "Mon Profil", '/profiles', class: "dropdown-item" %>
                 <%= link_to "Mes Annonces", '/archive', class: "dropdown-item" %>
                 <!-- <%= link_to "Mes Favoris", '/archive', class: "dropdown-item" %> -->
-                <%= link_to "Candidature en attente", '/waitlists', class: "dropdown-item" %>
+                <%= link_to "Candidature en attente", '/candidatures', class: "dropdown-item" %>
                 <%= link_to "Se Déconnecter" , destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
               </div>
             </li>

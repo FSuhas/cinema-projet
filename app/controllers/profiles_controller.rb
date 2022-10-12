@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :show,]
-  before_action :set_role, only: %i[index]
   before_action :set_profil, only: [:show]
 
   def index
