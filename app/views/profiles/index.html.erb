@@ -25,7 +25,7 @@
       </button>
     </div>
     <div style="display: flex;justify-content: space-between;align-items: flex-start;">
-      <p>Date de naissance : <strong id="strong-blue"><%= @user.date_de_naissance.strftime("%d/%m/%Y") %></strong></p>
+      <p>Date de naissance : <strong id="strong-blue"> <% if @user.date_de_naissance? %> <%= @user.date_de_naissance.strftime("%d/%m/%Y") %>  <% end %></strong></p>
       <button type="button" data-bs-toggle="modal" data-bs-target="#date" style="border: none;font-size:15px;background: none;">
         <i class="fa-solid fa-pen-to-square" style="border: none;font-size:15px;"></i>
       </button>
