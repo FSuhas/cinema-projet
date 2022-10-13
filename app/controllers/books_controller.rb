@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user = current_user
     if @book.save
-      redirect_to books_path, notice: "Books ajouté avec succès"
+      redirect_to books_path
     else
       redirect_to books_path, alert: "Votre books n'a pu être ajouté", status: :unprocessable_entity
     end

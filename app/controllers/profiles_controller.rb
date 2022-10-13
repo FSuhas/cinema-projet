@@ -19,9 +19,8 @@ class ProfilesController < ApplicationController
     @user = current_user
     if current_user.update(params_create)
       redirect_to profiles_path
-      flash[:notice] = "Mis à jour avec succès"
     else
-      alert[:notice] = "Une erreur est survenue"
+      redirect_to profiles_path, alert: "Votre profil n'a pu être modifié", status: :unprocessable_entity
     end
   end
 

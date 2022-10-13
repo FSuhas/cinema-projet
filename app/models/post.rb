@@ -4,7 +4,9 @@ class Post < ApplicationRecord
   has_many_attached :photos
   belongs_to :user
 
-  validates :titre, :descriptif, presence: true
+  validates :titre, presence: true
+  validates :descriptif, presence: true
+
 
   include PgSearch::Model
 
