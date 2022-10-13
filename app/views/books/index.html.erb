@@ -8,26 +8,39 @@
 
 <br><br><br>
 
-<div class="container" style="display: flex;justify-content: center;align-items: center;">
-  <div class="container" style="display: grid;grid-template-columns: 1fr 1fr 1fr;align-items: center;justify-items: center;">
-    <% @books.each do |b|%>
-    <div class="card-book" style="display: flex;width: 96%;flex-direction: column;align-items: center;border-radius: 10px;margin: 4px;justify-content: center;">
-      <%= link_to book_path(b), style: "align-self: flex-start;position: relative;top: 3px;right: -3px;", data: { turbo_method: :delete, turbo_confirm: "Supprimé ce book ?" } do %>
-          <i class="fa-solid fa-trash" style="font-size: 20px; color: black"></i>
+<% if @books.exists? %>
+  <div class="container" style="display: flex;justify-content: center;align-items: center;">
+    <div class="container" style="display: grid;grid-template-columns: 1fr 1fr 1fr;align-items: center;justify-items: center;">
+      <% @books.each do |b|%>
+        <div class="card-book" style="display: flex;width: 96%;flex-direction: column;align-items: center;border-radius: 10px;margin: 4px;justify-content: center;">
+          <%= link_to book_path(b), style: "align-self: flex-start;position: relative;top: 3px;right: -3px;", data: { turbo_method: :delete, turbo_confirm: "Supprimé ce book ?" } do %>
+            <i class="fa-solid fa-trash" style="font-size: 20px; color: black"></i>
+          <% end %>
+          <%= link_to book_path(b), style: 'margin: 3px; display: flex;flex-direction: column; align-items: center;' do %>
+            <i class="fa-solid fa-image" style="font-size: 50px; color: black"></i>
+            <small><%= b.titre.truncate(12).capitalize %></small>
+          <% end %>
+        </div>
         <% end %>
-      <%= link_to book_path(b), style: 'margin: 3px; display: flex;flex-direction: column; align-items: center;' do %>
-          <i class="fa-solid fa-image" style="font-size: 50px; color: black"></i>
-        <small><%= b.titre.truncate(12).capitalize %></small>
-      <% end %>
-      </div>
-    <% end %>
-
-    <button type="button" data-bs-toggle="modal" data-bs-target="#add-book" style="margin: 3px; display: flex;flex-direction: column; align-items: center;border: none;font-size:15px;background: none;">
-      <i class="fa-solid fa-plus" style="font-size: 40px; color: black"></i>
-      <small>Ajouter</small>
-    </button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#add-book" style="margin: 3px; display: flex;flex-direction: column; align-items: center;border: none;font-size:15px;background: none;">
+          <i class="fa-solid fa-plus" style="font-size: 40px; color: black"></i>
+          <small>Ajouter</small>
+        </button>
+    </div>
   </div>
-</div>
+<% else %>
+      <h1 style="text-align: center;">Vous n'avez pas encore de books</h1>
+      <div class="container" style="display: grid;grid-template-columns: 1fr 1fr 1fr;align-items: center;justify-items: center;">
+        <div class="card-book" style="display: flex;width: 96%;flex-direction: column;align-items: center;border-radius: 10px;margin: 4px;justify-content: center;">
+          <i class="fa-solid fa-image" style="font-size: 50px; color: black"></i>
+          <small>Exemple</small>
+        </div>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#add-book" style="margin: 3px; display: flex;flex-direction: column; align-items: center;border: none;font-size:15px;background: none;">
+          <i class="fa-solid fa-plus" style="font-size: 40px; color: black"></i>
+          <small>Ajouter</small>
+        </button>
+      </div>
+<% end %>
 
 
 <!-- Modal -->
