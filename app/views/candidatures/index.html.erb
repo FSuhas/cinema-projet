@@ -19,6 +19,8 @@
   })
 </script>
 
+<!-- Candidats Profiles -->
+
 <% if current_user.role == 'candidat' %>
   <%= render 'shared/navbar' %>
 
@@ -37,82 +39,116 @@
     </ul>
     <hr>
   </div>
+
+  <!-- Evenements à venir -->
+
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade active show" id="future" role="tabpanel"  aria-labelledby="future-tab" >
       <div class="">
         <div class="container" style="display: flex;justify-content: center;align-items: center;">
           <div class="container" >
-            <% @bookings_recru.each do |b| %>
-            <% if b.post.date >= Date.today %>
-              <p>Pour le : <%= b.post.date.strftime("%d/%m/%y") %></p>
-              <hr>
-                <%= link_to post_path(b.post_id) do %>
-                  <div class="card-candidat" style="margin-bottom: 20px;">
-                    <% if b.post.photos.attached? %>
-                      <%= cl_image_tag b.post.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
-                    <% else %>
-                      <%= image_tag "https://images.unsplash.com/random?", height: 150 , class: 'candidat-photo', crop: :fill %>
-                    <% end %>
-                    <div class="card-candidat-info">
-                      <strong id="titre"><%= b.post.titre %></strong><br>
-                        <% if b.confirmation === false %>
-                          <div>
-                            <span class="badge bg-warning">En attente</span>
-                            <%= link_to booking_path(b), id: 'trash', data: { turbo_method: :delete, turbo_confirm: "Souhaitez-vous retirer vôtre candidature ?" } do %>
-                            <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
-                            <% end %>
-                          </div>
-                          <% else b.confirmation === true %>
-                          <span class="badge bg-success">Accepté</span>
+            <% if @bookings_recru.exists? %>
+              <% @bookings_recru.each do |b| %>
+                <% if b.post.date >= Date.today %>
+                  <p>Pour le : <%= b.post.date.strftime("%d/%m/%y") %></p>
+                  <hr>
+                    <%= link_to post_path(b.post_id) do %>
+                      <div class="card-candidat" style="margin-bottom: 20px;">
+                        <% if b.post.photos.attached? %>
+                          <%= cl_image_tag b.post.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
+                        <% else %>
+                          <%= image_tag "https://images.unsplash.com/random?", height: 150 , class: 'candidat-photo', crop: :fill %>
                         <% end %>
+                        <div class="card-candidat-info">
+                          <strong id="titre"><%= b.post.titre %></strong><br>
+                            <% if b.confirmation === false %>
+                              <div>
+                                <span class="badge bg-warning">En attente</span>
+                                <%= link_to booking_path(b), id: 'trash', data: { turbo_method: :delete, turbo_confirm: "Souhaitez-vous retirer vôtre candidature ?" } do %>
+                                <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+                                <% end %>
+                              </div>
+                            <% else b.confirmation === true %>
+                              <span class="badge bg-success">Accepté</span>
+                            <% end %>
+                        </div>
                       </div>
-                  </div>
+                    <% end %>
+                <% else %>
+                  <%= link_to posts_path do %>
+                    <div class="card-candidat" style="display:flex;margin-bottom: 20px;justify-content: center;align-items: center;">
+                      <p>Aucun évenements à venir</p>
+                    </div>
+                  <% end %>
                 <% end %>
               <% end %>
+            <% else %>
+            <%= link_to posts_path do %>
+              <div class="card-candidat" style="display:flex;margin-bottom: 20px;justify-content: center;align-items: center;">
+                <p>Vous n'avez pas encore de candidatures</p>
+              </div>
+              <% end %>
             <% end %>
+
+            <%= render 'shared/footer' %>
           </div>
         </div>
     </div>
   </div>
 
+  <!-- Evenements passés -->
+
   <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
     <div class="">
       <div class="container" style="display: flex;justify-content: center;align-items: center;">
         <div class="container" >
-          <% @bookings_recru.each do |b| %>
-          <% if b.post.date <= Date.today %>
-            <p>Pour le : <%= b.post.date.strftime("%d/%m/%y") %></p>
-            <hr>
-              <%= link_to post_path(b.post_id) do %>
-                <div class="card-candidat" style="margin-bottom: 20px;">
-                  <% if b.post.photos.attached? %>
-                    <%= cl_image_tag b.post.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
-                  <% else %>
-                    <%= image_tag "https://images.unsplash.com/random?", height: 150 , class: 'candidat-photo', crop: :fill %>
-                  <% end %>
-                  <div class="card-candidat-info">
-                    <strong id="titre"><%= b.post.titre %></strong><br>
-                      <% if b.confirmation === false %>
-                        <div>
-                          <span class="badge bg-warning">En attente</span>
-                          <%= link_to booking_path(b), id: 'trash', data: { turbo_method: :delete, turbo_confirm: "Souhaitez-vous retirer vôtre candidature ?" } do %>
-                          <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
-                          <% end %>
-                        </div>
-                        <% else b.confirmation === true %>
-                        <span class="badge bg-success">Accepté</span>
+          <% if @bookings_recru.exists? %>
+            <% @bookings_recru.each do |b| %>
+              <% if b.post.date <= Date.today %>
+                <p>Pour le : <%= b.post.date.strftime("%d/%m/%y") %></p>
+                <hr>
+                  <%= link_to post_path(b.post_id) do %>
+                    <div class="card-candidat" style="margin-bottom: 20px;">
+                      <% if b.post.photos.attached? %>
+                        <%= cl_image_tag b.post.photos[0].key, height: 150 , class: 'candidat-photo', crop: :fill %>
+                      <% else %>
+                        <%= image_tag "https://images.unsplash.com/random?", height: 150 , class: 'candidat-photo', crop: :fill %>
                       <% end %>
+                      <div class="card-candidat-info">
+                        <strong id="titre"><%= b.post.titre %></strong><br>
+                          <% if b.confirmation === false %>
+                            <div>
+                              <span class="badge bg-warning">En attente</span>
+                              <%= link_to booking_path(b), id: 'trash', data: { turbo_method: :delete, turbo_confirm: "Souhaitez-vous retirer vôtre candidature ?" } do %>
+                                <i class="fa-solid fa-circle-xmark" style="font-size: 30px; color: rgb(252, 5, 5)"></i>
+                              <% end %>
+                            </div>
+                          <% else b.confirmation === true %>
+                            <span class="badge bg-success">Accepté</span>
+                          <% end %>
+                      </div>
                     </div>
-                </div>
+                  <% end %>
               <% end %>
             <% end %>
+          <% else %>
+            <%= link_to posts_path do %>
+              <div class="card-candidat" style="display:flex;margin-bottom: 20px;justify-content: center;align-items: center;">
+                <p>Vous n'avez pas encore de candidatures</p>
+              </div>
+            <% end %>
           <% end %>
+
+          <%= render 'shared/footer' %>
+
         </div>
       </div>
-      <%= render 'shared/footer' %>
     </div>
   </div>
 <% end %>
+
+
+<!--  Recruteur Profiles -->
 
 <% if current_user.role == 'recruteur' %>
   <%= render 'shared/navbarrecruteur' %>
