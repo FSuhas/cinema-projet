@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :posts do
-    resources :bookings, only: [:create, :update]
+    resources :bookings, only: [:create, :update, :destroy]
   end
 
   # route profile
@@ -14,9 +14,6 @@ Rails.application.routes.draw do
 
   # route candidature
   resources :candidatures, only: %i[index], as: :candidatures
-
-  # route booking
-  resources :bookings, only: [:destroy]
 
   # route mensuration
   resources :mensurations, only: %i[index show]
